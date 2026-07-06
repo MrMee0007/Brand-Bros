@@ -1,23 +1,30 @@
+import HeroSection         from "../components/HeroSection";
+import StatsMarquee        from "../components/StatsMarquee";
+import ServicesSection     from "../components/ServicesSection";
+import ProcessSection      from "../components/ProcessSection";
+import FloatingReels3D     from "../components/FloatingReels3D";
+import ReelSection         from "../components/ReelSection";
+import WhyUsSection        from "../components/WhyUsSection";
+import WorksPreview        from "../components/WorksPreview";
+import PricingSection      from "../components/PricingSection";
+import TestimonialsSection from "../components/TestimonalsSection";
+import CTA                 from "../components/CTA";
 
-import Work2 from '../components/Work2'
-import PortfolioCarousel from '../components/Carousal'
-import  Hero  from '../components/Hero'
-import AboutSection from '../components/Projeects'
-import ClientsSection from '../components/client'
-import TestimonialsSection from '../components/TestimonalsSection'
-
-
-const Home = () => {
+export default function Home() {
   return (
     <div className="overflow-x-hidden">
-      <Hero/>
-      <AboutSection />
-      <PortfolioCarousel />
-      <ClientsSection/>
-      <Work2 />
+      <HeroSection />
+      <StatsMarquee />
+      <ServicesSection />
+      <ProcessSection />
+      {/* 3D floating reel showcase between sections */}
+      <FloatingReels3D />
+      {/* <ReelSection /> */}
+      <WhyUsSection />
+      {/* <WorksPreview /> */}
+      <PricingSection />
       <TestimonialsSection />
+      <CTA />
     </div>
-  )
+  );
 }
-
-export default Home

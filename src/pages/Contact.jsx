@@ -73,11 +73,11 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
 
 
       {/* Background Glow */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#F5C200]/8 blur-[180px] rounded-full pointer-events-none" />
 
       {/* Hero */}
 
@@ -96,7 +96,7 @@ useEffect(() => {
       repeat: Infinity,
       ease: "easeInOut",
     }}
-    className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-[120px]"
+    className="absolute top-20 left-20 w-72 h-72 bg-[#F5C200]/12 rounded-full blur-[120px]"
   />
 
   <motion.div
@@ -110,7 +110,7 @@ useEffect(() => {
       repeat: Infinity,
       ease: "easeInOut",
     }}
-    className="absolute right-20 top-32 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px]"
+    className="absolute right-20 top-32 w-96 h-96 bg-[#F5C200]/6 rounded-full blur-[140px]"
   />
 
   <div className="max-w-7xl mx-auto relative z-10">
@@ -122,7 +122,7 @@ useEffect(() => {
       transition={{ duration: 0.8 }}
       className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/20 bg-card/40 backdrop-blur-xl"
     >
-      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+      <div className="w-2 h-2 rounded-full bg-[#F5C200] animate-pulse" />
       <span className="text-xs tracking-[0.25em] uppercase font-mono">
         Let's Build Something Great
       </span>
@@ -329,7 +329,7 @@ useEffect(() => {
                 icon={<Mail className="w-4 h-4" />}
                 label="Email"
                 lines={[
-                  "brandmonk.creatives@gmail.com",
+                  "anshgarg7640@gmail.com",
                 ]}
               />
 
@@ -337,7 +337,8 @@ useEffect(() => {
                 icon={<Phone className="w-4 h-4" />}
                 label="Phone"
                 lines={[
-                  "+91 75007 41215",
+                  "+91 88875 86830",
+                  "+91 72488 48020",
                   "Mon - Sat | 10 AM - 7 PM",
                 ]}
               />
@@ -346,8 +347,8 @@ useEffect(() => {
                 icon={<MapPin className="w-4 h-4" />}
                 label="Office"
                 lines={[
-                  "Brand Monk Studio",
-                  "India",
+                  "BRAND//BROS Studio",
+                  "Gurgaon, Haryana, India",
                 ]}
               />
 
@@ -412,4 +413,5 @@ const Detail = ({ icon, label, lines }) => (
 );
 
 export default Contact;
+
 
