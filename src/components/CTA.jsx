@@ -35,12 +35,9 @@ const CTA = () => {
             transition={{ duration: 0.8, ease: [0.2, 0, 0, 1] }}
           >
             <h2 className="font-heading text-[clamp(2.8rem,7vw,5.5rem)] leading-[0.9] uppercase mb-2">
-              Thank You.
+              <span className="text-[#F5C200]"><span>Thank You. <br /> Let's Build</span>
               <br />
-              <span>Let's Build</span>
-              <br />
-              Something{" "}
-              <span className="text-[#F5C200]">Great.</span>
+              Something{" "} Great.</span>
             </h2>
 
             {/* Gold separator */}
@@ -99,7 +96,7 @@ const CTA = () => {
             <div className="flex items-center gap-4 mb-2">
               <span className="text-4xl select-none">🚀</span>
               <h3 className="font-heading text-[clamp(1.8rem,4vw,2.8rem)] leading-none uppercase">
-                Let's <span className="text-[#F5C200]">Grow</span> Together.
+               <span className="text-[#F5C200]"> Let's Grow  Together.</span>
               </h3>
             </div>
             <div className="w-10 h-0.5 bg-[#F5C200] mb-8 ml-16" />

@@ -9,6 +9,7 @@ import WorksPreview        from "../components/WorksPreview";
 import PricingSection      from "../components/PricingSection";
 import TestimonialsSection from "../components/TestimonalsSection";
 import CTA                 from "../components/CTA";
+import TeamSection from "../components/TeamSection";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <WhyUsSection />
       {/* <WorksPreview /> */}
       <PricingSection />
+      <TeamSection />
       <TestimonialsSection />
       <CTA />
     </div>
