@@ -7,8 +7,6 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import founder1 from "../assets/Aditi.jpeg";
-import founder2 from "../assets/Shourya.jpeg";
 import { ArrowRight, Award, Users, TrendingUp, Zap, Star, CheckCircle } from "lucide-react";
 
 /* ── DATA ─────────────────────────────────────── */

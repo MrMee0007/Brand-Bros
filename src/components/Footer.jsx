@@ -96,7 +96,7 @@ export default function Footer() {
               </div>
               <a href="mailto:anshgarg7640@gmail.com" className="flex items-center gap-2.5 hover:text-[#F5C200] transition-colors">
                 <Mail size={14} className="text-[#F5C200] flex-shrink-0" />
-                <span>anshgarg7640@gmail.com</span>
+                <span>brandbros1711@gmail.com</span>
               </a>
               <a href="tel:+918887586830" className="flex items-start gap-2.5 hover:text-[#F5C200] transition-colors">
                 <Phone size={14} className="text-[#F5C200] flex-shrink-0 mt-0.5" />

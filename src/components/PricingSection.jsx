@@ -30,6 +30,7 @@ const PLANS = [
       "Story Management",
       "Custom Thumbnails",
       "Monthly Review",
+      "Complimentry Outro"
     ],
     featured: false,
   },
@@ -46,6 +47,7 @@ const PLANS = [
       "Custom Thumbnails",
       "Monthly Review",
       "Priority Support",
+      "Complimentry Outro",
     ],
     featured: true,
   },
@@ -63,6 +65,7 @@ const PLANS = [
       "Monthly Review",
       "Priority Support",
       "Advanced Content Strategy",
+      "Complimentry Outro",
     ],
     featured: false,
   },
@@ -129,7 +132,7 @@ export default function PricingSection() {
                 className={`block text-center py-3.5 rounded-lg text-[9px] font-bold uppercase tracking-widest transition-all duration-300 ${
                   plan.featured
                     ? "bg-[#F5C200] text-black hover:bg-[#FFD740]"
-                    : "border border-white/12 hover:border-[#F5C200]/50 hover:text-[#F5C200]"
+                    : "border border-white/25  hover:border-[#F5C200]/50 hover:text-[#F5C200] text-white"
                 }`}
               >
                 Get Started →

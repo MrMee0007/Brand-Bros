@@ -9,98 +9,122 @@ const WORKS = [
   {
     id: 1,
     tag: "Promotion",
-    client: "Nike",
+    client: "LLM",
     title: "Beyond Limits",
-    metric: "2.4M Views",
+    metric: "40%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
   },
   {
     id: 2,
     tag: "Product",
-    client: "Royal Enfield",
+    client: "LLM",
     title: "Ride Free",
-    metric: "1.8M Views",
+    metric: "28%+ Conversion",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224214/LLM_6_1_gtbngk.mp4",
   },
   {
     id: 3,
     tag: "Product",
-    client: "Apple",
+    client: "LLM",
     title: "Vision in Motion",
-    metric: "+230% Sales",
+    metric: "33%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224208/llm4_1_xya95b.mp4",
   },
   {
     id: 4,
     tag: "Ads",
-    client: "BMW",
+    client: "LLM",
     title: "Power Redefined",
-    metric: "5.6M Reach",
+    metric: "38%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224204/llm_female_formal_1_tmvw62.mp4",
   },
   {
     id: 5,
     tag: "Events",
-    client: "GLA University",
+    client: "LLM",
     title: "Annual Fest 2026",
-    metric: "450K Views",
+    metric: "14%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224199/LLM_formal_1_xalyqf.mp4",
   },
   {
     id: 6,
     tag: "Social",
-    client: "Brand Bros",
+    client: "LLM",
     title: "Creative Studio",
-    metric: "+12K Followers",
+    metric: "26%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224194/llm_3_1_rszely.mp4",
   },
   {
     id: 7,
     tag: "Reels",
-    client: "Mercedes",
+    client: "Raymond",
     title: "Luxury Meets Speed",
-    metric: "3.2M Views",
+    metric: "15%+ Conversion",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
   },
   {
     id: 8,
     tag: "Reels",
-    client: "Puma",
+    client: "jo motel",
     title: "Never Stop",
-    metric: "890K Views",
+    metric: "24%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223979/v12_1_quwqet.mp4",
   },
   {
     id: 9,
     tag: "Product",
-    client: "Sony",
+    client: "raymond",
     title: "Cinema Experience",
-    metric: "1.1M Views",
+    metric: "17%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223913/raymond_1_re_1_f50kfv.mp4",
   },
   {
     id: 10,
     tag: "Ads",
-    client: "Coca-Cola",
+    client: "jo motel",
     title: "Open Happiness",
-    metric: "4.9M Reach",
+    metric: "43%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223886/v6_1_ik9n1i.mp4",
   },
   {
     id: 11,
-    tag: "Promotion",
-    client: "Music Festival",
-    title: "Live Forever",
-    metric: "2.7M Views",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784235382/Join_Pratibha_xqauig.mp4",
+    tag: "Reels",
+    client: "detaliens",
+    title: "Never Stop",
+    metric: "37%+ Conversion",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663509/bullet_boontq.mp4",
   },
   {
     id: 12,
     tag: "Reels",
-    client: "Brand Bros",
-    title: "Behind The Scenes",
-    metric: "950K Views",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784235414/Flash_mob_2.O_bxf4w4.mp4",
+    client: "Brand Monk",
+    title: "Never Stop",
+    metric: "51%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663500/Comp_1_rqrgz7.mp4",
+  },
+  {
+    id: 13,
+    tag: "Reels",
+    client: "Berry Bros",
+    title: "Never Stop",
+    metric: "22%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663274/shop_ugc1_cvctcv.mp4",
+  },
+  {
+    id: 14,
+    tag: "Reels",
+    client: "DETALIENS",
+    title: "Never Stop",
+    metric: "16%+ Conversion",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663505/jawa_1_wrstl2.mp4",
+  },
+  {
+    id: 15,
+    tag: "Reels",
+    client: "BERRY BROS",
+    title: "Never Stop",
+    metric: "19%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663112/jujutsu_reel_p3_rmnq4c.mp4",
   },
 ];
 
@@ -387,10 +411,6 @@ const WorkCard = memo(({ item, index, inView, onPlay }) => {
             {item.tag}
           </span>
 
-          <span className="text-[8px] text-red-500 font-bold">
-            ● LIVE
-          </span>
-
         </div>
 
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
@@ -413,10 +433,6 @@ const WorkCard = memo(({ item, index, inView, onPlay }) => {
           <p className="text-[9px] uppercase tracking-[0.15em] text-white/40">
             {item.client}
           </p>
-
-          <h3 className="text-white font-semibold mt-1">
-            {item.title}
-          </h3>
 
           <p className="text-[#F5C200] text-xs mt-1">
             {item.metric}

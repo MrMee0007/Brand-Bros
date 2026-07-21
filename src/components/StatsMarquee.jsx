@@ -8,10 +8,10 @@ const BRANDS = [
 ];
 
 const STATS = [
-  { target: 17,   suffix: "+",  label: "Brands Launched"  },
-  { target: 85,  suffix: "+",  label: "Reels Produced"   },
-  { target: 3,   suffix: "M",  label: "Total Reach"      },
-  { target: 83,   suffix: "%",  label: "Client Retention" },
+  { target: 10,   suffix: "+",  label: "Brands Launched"  },
+  { target: 105,  suffix: "+",  label: "Reels Produced"   },
+  { target: 1,  suffix: "M",  label: "Total Reach"      },
+  { target: 80,   suffix: "%",  label: "Client Retention" },
 ];
 
 /* ─── Animated counter ───────────────────────────── */

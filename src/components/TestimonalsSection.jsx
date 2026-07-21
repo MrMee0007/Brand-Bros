@@ -4,37 +4,62 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 const TESTIMONIALS = [
   {
-    name: "Marketing Lead",
-    org: "Royal Enfield",
-    initials: "RE",
-    quote: "MEDIAVERSE treats every project like a craft. The Himalayan campaign moved both the culture and the cash register. Absolutely cinematic.",
+    name: "Creative Director",
+    org: "LLM",
+    initials: "LLM",
+    quote:
+      "Brand Bros transformed our visual identity with premium storytelling. Every campaign felt cinematic, resulting in stronger audience engagement and memorable brand recall.",
   },
   {
-    name: "Growth Director",
-    org: "Ixigo",
-    initials: "IX",
-    quote: "Their content network is unreal. We unlocked 3x install lift in a single quarter without inflating the budget by a single rupee.",
+    name: "Marketing Head",
+    org: "Raymond",
+    initials: "RY",
+    quote:
+      "The Brand Bros team elevated our luxury positioning across digital platforms. Their production quality, creativity, and execution exceeded every expectation.",
+  },
+  {
+    name: "Founder",
+    org: "Berry Bros",
+    initials: "BB",
+    quote:
+      "From strategy to execution, Brand Bros delivered content that truly reflected our vision. Our engagement grew rapidly, and our brand presence became stronger than ever.",
+  },
+  {
+    name: "Operations Manager",
+    org: "JO Motel",
+    initials: "JM",
+    quote:
+      "Brand Bros captured the experience of our property beautifully. Their cinematic reels increased our online visibility and helped attract more direct bookings.",
   },
   {
     name: "Brand Manager",
+    org: "XTRAFUEL",
+    initials: "XF",
+    quote:
+      "Their high-energy creative perfectly matched our brand personality. Brand Bros consistently delivered content that drove impressive reach and customer engagement.",
+  },
+  {
+    name: "Marketing Manager",
     org: "Nikon India",
     initials: "NK",
-    quote: "They understood photography culture better than most photographers I've worked with. Every reel felt native — every metric moved up.",
+    quote:
+      "Brand Bros understands visual storytelling at a different level. Every shoot was thoughtfully crafted and delivered exceptional results across our digital campaigns.",
   },
   {
     name: "Dean of Admissions",
     org: "GLA University",
     initials: "GLA",
-    quote: "From brand positioning to performance funnels, MEDIAVERSE rebuilt our admissions engine from scratch. Plus 71% qualified leads, on record.",
+    quote:
+      "Brand Bros modernized our digital communication with impactful campaigns and engaging content. Their work significantly strengthened our outreach to prospective students.",
   },
   {
-    name: "Founder",
-    org: "Brndfy",
-    initials: "BR",
-    quote: "The strategic clarity they brought to our positioning closed our first ₹2Cr of pipeline. The best creative decision we've made as a startup.",
+    name: "Founder & CEO",
+    org: "Think And Grow",
+    initials: "TG",
+    quote:
+      "Partnering with Brand Bros gave our brand a premium identity online. Their creativity, strategy, and attention to detail made a measurable difference to our growth.",
   },
 ];
-
 export default function TestimonialsSection() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });

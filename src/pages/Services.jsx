@@ -6,10 +6,10 @@ import {
   Film, LayoutGrid, Megaphone, Camera, TrendingUp, Users,
   Star, Zap, Globe, Cpu,
 } from "lucide-react";
-import creatorImg  from "../assets/creator.jpeg";
+import creatorImg  from "../assets/creator.png";
 import businessImg from "../assets/business.jpeg";
 import contentImg  from "../assets/content.jpeg";
-import careersImg  from "../assets/career.jpeg";
+import careersImg  from "../assets/team.png";
 
 /* ── Data ────────────────────────────────────────── */
 const SERVICES = [

@@ -153,6 +153,107 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
+// const REELS = [
+//   {
+//     tag: "Reels",
+//     title: "Midnight Run",
+//     metric: "4.8x ROAS",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223886/v6_1_ik9n1i.mp4",
+//     rot: -18,
+//     x: -310,
+//     y: 20,
+//     z: -60,
+//   },
+//   {
+//     tag: "Branding",
+//     title: "Sensory Universe",
+//     metric: "1.2M Views",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224214/LLM_6_1_gtbngk.mp4",
+//     rot: -8,
+//     x: -180,
+//     y: -5,
+//     z: -20,
+//   },
+//   {
+//     tag: "Product",
+//     title: "Light on Glass",
+//     metric: "+87% CVR",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
+//     rot: 0,
+//     x: 0,
+//     y: 0,
+//     z: 0,
+//   },
+//   {
+//     tag: "Fashion",
+//     title: "Modern Luxury",
+//     metric: "+240% Engage",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224194/llm_3_1_rszely.mp4",
+//     rot: 8,
+//     x: 180,
+//     y: -5,
+//     z: -20,
+//   },
+//   {
+//     tag: "Events",
+//     title: "Three Days",
+//     metric: "8.4M Reach",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+//     rot: 18,
+//     x: 310,
+//     y: 20,
+//     z: -60,
+//   },
+//   {
+//     tag: "Events",
+//     title: "Three Days",
+//     metric: "8.4M Reach",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+//     rot: 18,
+//     x: 310,
+//     y: 20,
+//     z: -60,
+//   },
+//   {
+//     tag: "Events",
+//     title: "Three Days",
+//     metric: "8.4M Reach",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+//     rot: 18,
+//     x: 310,
+//     y: 20,
+//     z: -60,
+//   },
+//   {
+//     tag: "Events",
+//     title: "Three Days",
+//     metric: "8.4M Reach",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+//     rot: 18,
+//     x: 310,
+//     y: 20,
+//     z: -60,
+//   },
+//   {
+//     tag: "Events",
+//     title: "Three Days",
+//     metric: "8.4M Reach",
+//     video:
+//       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+//     rot: 18,
+//     x: 310,
+//     y: 20,
+//     z: -60,
+//   },
+// ];
 const REELS = [
   {
     tag: "Reels",
@@ -160,10 +261,10 @@ const REELS = [
     metric: "4.8x ROAS",
     video:
       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223886/v6_1_ik9n1i.mp4",
-    rot: -18,
-    x: -310,
-    y: 20,
-    z: -60,
+    rot: -32,
+    x: -600,
+    y: 90,
+    z: -180,
   },
   {
     tag: "Branding",
@@ -171,10 +272,10 @@ const REELS = [
     metric: "1.2M Views",
     video:
       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224214/LLM_6_1_gtbngk.mp4",
-    rot: -8,
-    x: -180,
-    y: -5,
-    z: -20,
+    rot: -24,
+    x: -450,
+    y: 55,
+    z: -120,
   },
   {
     tag: "Product",
@@ -182,10 +283,10 @@ const REELS = [
     metric: "+87% CVR",
     video:
       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
-    rot: 0,
-    x: 0,
-    y: 0,
-    z: 0,
+    rot: -16,
+    x: -300,
+    y: 25,
+    z: -70,
   },
   {
     tag: "Fashion",
@@ -193,21 +294,65 @@ const REELS = [
     metric: "+240% Engage",
     video:
       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224194/llm_3_1_rszely.mp4",
-    rot: 8,
-    x: 180,
-    y: -5,
-    z: -20,
+    rot: -8,
+    x: -170,
+    y: 8,
+    z: 25,
   },
   {
     tag: "Events",
-    title: "Three Days",
+    title: "Center",
     metric: "8.4M Reach",
     video:
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663500/Comp_1_rqrgz7.mp4",
+    rot: 0,
+    x: 0,
+    y: 0,
+    z: 500,
+  },
+  {
+    tag: "Luxury",
+    title: "Golden Hour",
+    metric: "3.2M Views",
+    video:
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663274/shop_ugc1_cvctcv.mp4",
+    rot: 8,
+    x: 170,
+    y: 8,
+    z: 25,
+  },
+  {
+    tag: "Lifestyle",
+    title: "Urban Flow",
+    metric: "+195% Reach",
+    video:
       "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
-    rot: 18,
-    x: 310,
-    y: 20,
-    z: -60,
+    rot: 16,
+    x: 300,
+    y: 25,
+    z: -70,
+  },
+  {
+    tag: "Campaign",
+    title: "Motion Story",
+    metric: "7.1M Views",
+    video:
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663112/jujutsu_reel_p3_rmnq4c.mp4",
+    rot: 24,
+    x: 450,
+    y: 55,
+    z: -120,
+  },
+  {
+    tag: "Creative",
+    title: "Final Cut",
+    metric: "+420% Engagement",
+    video:
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663505/jawa_1_wrstl2.mp4",
+    rot: 32,
+    x: 600,
+    y: 90,
+    z: -180,
   },
 ];
 
@@ -354,7 +499,7 @@ export default function FloatingReels3D() {
 
               {/* Reel Badge */}
               <div className="absolute top-3 left-3 flex items-center gap-1">
-                <div className="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
+                {/* <div className="w-1 h-1 rounded-full bg-red-500 animate-pulse" /> */}
                 <span className="text-[6px] uppercase tracking-[0.2em] text-white/50">
                   REEL
                 </span>
@@ -362,9 +507,9 @@ export default function FloatingReels3D() {
 
               {/* Category */}
               <div className="absolute top-3 right-3">
-                <span className="text-[6px] uppercase tracking-[0.15em] px-2 py-1 rounded-full bg-black/50 border border-white/10 text-white/50">
+                {/* <span className="text-[6px] uppercase tracking-[0.15em] px-2 py-1 rounded-full bg-black/50 border border-white/10 text-white/50">
                   {reel.tag}
-                </span>
+                </span> */}
               </div>
 
               {/* Play Button */}
@@ -391,14 +536,13 @@ export default function FloatingReels3D() {
               {/* Bottom Info */}
               <div className="absolute bottom-0 left-0 right-0 p-3">
 
-                <p className="font-heading text-sm text-[var(--brand)]">
+                 {/* <p className="font-heading text-sm text-[var(--brand)]">
                   {reel.metric}
-                </p>
+                </p> */}
 
                 <p className="text-[8px] text-white/60 mt-1">
                   {reel.title}
-                </p>
-
+                </p> 
               </div>
 
             </div>

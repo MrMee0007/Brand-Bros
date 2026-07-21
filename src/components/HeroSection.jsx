@@ -3,11 +3,11 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-import slide1 from "../assets/slide1.png";
-import slide2 from "../assets/slide2.png";
-import slide3 from "../assets/slide3.png";
-import slide4 from "../assets/slide4.png";
-import slide5 from "../assets/slide5.png";
+// import slide1 from "../assets/slide1.png";
+// import slide2 from "../assets/slide2.png";
+// import slide3 from "../assets/slide3.png";
+// import slide4 from "../assets/slide4.png";
+// import slide5 from "../assets/slide5.png";
 
 /* ── Slide data ──────────────────────────────────── */
 const SLIDES = [
@@ -336,9 +336,9 @@ export default function HeroSection() {
           {/* Stats strip (desktop) */}
           <div className="hidden lg:flex items-center gap-6 flex-shrink-0">
             {[
-              { to: 17, suffix: "+", label: "Brands" },
-              { to: 86, suffix: "+", label: "Reels" },
-              { to: 3, suffix: "M", label: "Reach" },
+              { to: 10, suffix: "+", label: "Brands" },
+              { to: 105, suffix: "+", label: "Reels" },
+              { to: 1, suffix: "M", label: "Reach" },
             ].map(({ to, suffix, label }) => (
               <div key={label} className="text-center">
                 <p className="font-heading text-base leading-none text-[#F5C200]">

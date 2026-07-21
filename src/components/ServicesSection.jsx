@@ -12,9 +12,9 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { icon: Users,  num: "28+",   label: "HAPPY CLIENTS"       },
-  { icon: Film,   num: "41+",  label: "PROJECTS DELIVERED"  },
-  { icon: Target, num: "83%+",  label: "CLIENT RETENTION"    },
+  { icon: Users,  num: "8",   label: "HAPPY CLIENTS"       },
+  { icon: Film,   num: "10+",  label: "PROJECTS DELIVERED"  },
+  { icon: Target, num: "80%",  label: "CLIENT RETENTION"    },
   { icon: Star,   num: "4.3/5", label: "AVERAGE RATING"      },
 ];
 

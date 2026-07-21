@@ -68,8 +68,8 @@ const CTA = () => {
                   <Mail size={14} className="text-[#F5C200]" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <a href="mailto:anshgarg7640@gmail.com" className="text-white font-semibold text-sm hover:text-[#F5C200] transition-colors">
-                    anshgarg7640@gmail.com
+                  <a href="mailto:brandbros1711@gmail.com" className="text-white font-semibold text-sm hover:text-[#F5C200] transition-colors">
+                    brandbros1711@gmail.com
                   </a>
                   <p className="text-white/35 text-xs mt-1">Drop us an email anytime.</p>
                 </div>
