@@ -11,10 +11,10 @@ import { ArrowRight, Award, Users, TrendingUp, Zap, Star, CheckCircle } from "lu
 
 /* ── DATA ─────────────────────────────────────── */
 const STATS = [
-  { num: "17+",  label: "Brands Launched" },
-  { num: "85+", label: "Reels Produced"  },
-  { num: "3M",  label: "Total Reach"     },
-  { num: "83%",  label: "Client Retention"},
+  { num: "10+",  label: "Brands Launched" },
+  { num: "105+", label: "Reels Produced"  },
+  { num: "1M",  label: "Total Reach"     },
+  { num: "80%",  label: "Client Retention"},
 ];
 
 const CAROUSEL_SLIDES = [
@@ -52,11 +52,35 @@ const VALUES = [
 ];
 
 const TIMELINE = [
-  { year: "2022", title: "BRAND//BROS Founded",  desc: "Started with a vision: every brand deserves cinematic storytelling."   },
-  { year: "2023", title: "50+ Projects",         desc: "First 50 clients across fashion, F&B, automotive, and tech."           },
-  { year: "2024", title: "Full-Stack Studio",    desc: "Expanded to drone, events, ads, and growth retainers under one roof."  },
-  { year: "2025", title: "12M Reach Milestone",  desc: "Content delivered 12M+ organic impressions across client accounts."    },
-  { year: "2026", title: "Building India's Best",desc: "On a mission to become the most creative studio in North India."       },
+  {
+    year: "March 2026",
+    title: "Foundation",
+    desc: "After gaining hands-on experience at a marketing agency and mastering the fundamentals of branding, content strategy, production, editing, and client management, Brand Bros was founded to redefine visual storytelling."
+  },
+
+  {
+    year: "April 2026",
+    title: "Winning Trust",
+    desc: "Partnered with our first businesses, delivering high-quality brand films, social media campaigns, and product content that established long-term client relationships."
+  },
+
+  {
+    year: "May 2026",
+    title: "Brands That Grew",
+    desc: "Worked with businesses across multiple industries, helping them build stronger digital identities, reach larger audiences, and transform followers into customers through consistent creative content."
+  },
+
+  {
+    year: "June 2026",
+    title: "Beyond Content",
+    desc: "Evolved into a full-service creative partner offering branding, advertising campaigns, event coverage, drone production, and social media growth strategies."
+  },
+
+  {
+    year: "Present",
+    title: "The Vision Ahead",
+    desc: "We're just getting started. Brand Bros exists to build iconic brands, inspire creativity, and become one of India's leading creative studios known for work that leaves a lasting impact."
+  },
 ];
 
 /* ── SECTION WRAPPER ──────────────────────────── */
@@ -196,7 +220,7 @@ export default function About() {
             <div className="absolute inset-12 rounded-full border border-white/5 animate-spin-slow" style={{ animationDuration: "30s" }} />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
-                <div className="font-heading text-5xl text-[var(--brand)] opacity-30">17+</div>
+                <div className="font-heading text-5xl text-[var(--brand)] opacity-30">10+</div>
                 <div className="text-[9px] uppercase tracking-[0.3em] text-white/20 mt-1">Brands</div>
               </div>
             </div>
@@ -448,7 +472,7 @@ export default function About() {
       </section>
 
       {/* ═══ STAR RATING STRIP ═══════════════════ */}
-      <section className="py-12 border-y border-white/5 bg-black">
+      {/* <section className="py-12 border-y border-white/5 bg-black">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-12">
             {[["Google", "4.2"], ["Instagram", "3.8"], ["LinkedIn", "3.6"]].map(([pl, rat]) => (
@@ -466,7 +490,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ═══ CTA ═════════════════════════════════ */}
       <section className="relative py-36 px-6 overflow-hidden">

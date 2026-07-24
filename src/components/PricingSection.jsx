@@ -22,8 +22,8 @@ const PLANS = [
     name: "STARTER",
     desc: "Perfect for startups.",
     features: [
-      "10 Reels (7 Std + 3 Premium)",
-      "5 Carousel Posts",
+      "12 Reels (11 Std + 1 Premium)",
+      "4 Carousel Posts",
       "Caption Writing",
       "Content Calendar",
       "Social Media Management",
@@ -38,8 +38,8 @@ const PLANS = [
     name: "GROWTH",
     desc: "Most popular — scale your brand.",
     features: [
-      "15 Reels (10 Std + 5 Premium)",
-      "10 Carousel Posts",
+      "12 Reels (8 Std + 4 Premium)",
+      "5 Carousel Posts",
       "Caption Writing",
       "Content Calendar",
       "Social Media Management",
@@ -55,8 +55,8 @@ const PLANS = [
     name: "PREMIUM",
     desc: "Full-throttle for market leaders.",
     features: [
-      "15 Reels (5 Std + 10 Premium)",
-      "15 Carousel Posts",
+      "15 Reels (7 Std + 8 Premium)",
+      "8 Carousel Posts",
       "Caption Writing",
       "Content Calendar",
       "Social Media Management",

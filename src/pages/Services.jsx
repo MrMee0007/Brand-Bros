@@ -275,7 +275,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="flex flex-wrap gap-8"
             >
-              {[["17+","Brands"],["85+","Projects"],["83%+","Retention"],["4.2/5","Rating"]].map(([num, label]) => (
+              {[["10+","Brands"],["105+","Projects"],["80%","Retention"],["4.3/5","Rating"]].map(([num, label]) => (
                 <div key={label}>
                   <p className="font-heading text-3xl text-[#F5C200]">{num}</p>
                   <p className="text-[9px] uppercase tracking-[0.2em] text-white/30 mt-1">{label}</p>
@@ -344,7 +344,7 @@ export default function ServicesPage() {
               href="mailto:anshgarg7640@gmail.com"
               className="inline-flex items-center gap-2 border border-white/12 px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:border-[#F5C200]/40 hover:text-[#F5C200] transition-all duration-300"
             >
-              anshgarg7640@gmail.com
+              brandbros1711@gmail.com
             </a>
           </div>
         </div>
