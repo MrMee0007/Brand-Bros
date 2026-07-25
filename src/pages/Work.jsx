@@ -126,6 +126,22 @@ const WORKS = [
     metric: "19%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663112/jujutsu_reel_p3_rmnq4c.mp4",
   },
+  {
+    id: 16,
+    tag: "Reels",
+    client: "CSTECH",
+    title: "Never Stop",
+    metric: "11% Conversion",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012751/0724_1_1_vxxvq9.mp4",
+  },
+  {
+    id: 17,
+    tag: "Reels",
+    client: "BERRY BROS",
+    title: "Never Stop",
+    metric: "24%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012731/dessert_1_lwlpz3.mp4",
+  },
 ];
 
 
