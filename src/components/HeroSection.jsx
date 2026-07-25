@@ -13,7 +13,7 @@ import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-reac
 const SLIDES = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1783361373/Img23_sfv5n0.jpg",
+    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997621/Img23_sg4ffv.webp",
     category: "Brand Film",
     title: "The Sensory\nUniverse",
     tag: "#BrandStory",
@@ -21,7 +21,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1783361360/Img14_ypazc9.jpg",
+    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997618/Img14_vmuyqf.webp",
     category: "Fashion Editorial",
     title: "Modern\nGenre",
     tag: "#FashionFilm",
@@ -37,7 +37,7 @@ const SLIDES = [
   },
   {
     id: 4,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1783362280/Img6_kvvaw1.jpg",
+    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997628/Img6_kwplgd.webp",
     category: "Production",
     title: "Behind \nCamera",
     tag: "#StudioLife",

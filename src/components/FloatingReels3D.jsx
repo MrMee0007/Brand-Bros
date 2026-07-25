@@ -304,7 +304,7 @@ const REELS = [
     title: "Center",
     metric: "8.4M Reach",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663500/Comp_1_rqrgz7.mp4",
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784998381/Tng_1_redo_1_1_m0aoks.mp4",
     rot: 0,
     x: 0,
     y: 0,

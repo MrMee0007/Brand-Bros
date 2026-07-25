@@ -55,7 +55,7 @@ const PLANS = [
     name: "PREMIUM",
     desc: "Full-throttle for market leaders.",
     features: [
-      "15 Reels (7 Std + 8 Premium)",
+      "16 Reels (8 Std + 8 Premium)",
       "8 Carousel Posts",
       "Caption Writing",
       "Content Calendar",
