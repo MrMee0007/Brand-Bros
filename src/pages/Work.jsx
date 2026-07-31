@@ -8,11 +8,11 @@
 const WORKS = [
   {
     id: 1,
-    tag: "Promotion",
-    client: "LLM",
+    tag: "Events",
+    client: "Club DJ",
     title: "Beyond Limits",
-    metric: "40%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
+    metric: "33%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785487009/1785486516433.publer.com_vsrrys.mp4",
   },
   {
     id: 2,
@@ -141,6 +141,14 @@ const WORKS = [
     title: "Never Stop",
     metric: "24%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012731/dessert_1_lwlpz3.mp4",
+  },
+  {
+    id: 18,
+    tag: "Promotion",
+    client: "LLM",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
   },
 ];
 
