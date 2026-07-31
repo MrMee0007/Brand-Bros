@@ -293,7 +293,7 @@ const REELS = [
     title: "Modern Luxury",
     metric: "+240% Engage",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224194/llm_3_1_rszely.mp4",
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785487009/1785486516433.publer.com_vsrrys.mp4",
     rot: -8,
     x: -170,
     y: 8,
@@ -304,7 +304,7 @@ const REELS = [
     title: "Center",
     metric: "8.4M Reach",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785487009/1785486516433.publer.com_vsrrys.mp4",
+      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784998381/Tng_1_redo_1_1_m0aoks.mp4",
     rot: 0,
     x: 0,
     y: 0,
