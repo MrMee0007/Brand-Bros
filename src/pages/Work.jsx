@@ -12,7 +12,7 @@ const WORKS = [
     client: "Club DJ",
     title: "Beyond Limits",
     metric: "33%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785487009/1785486516433.publer.com_vsrrys.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/jawa_1.mp4",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const WORKS = [
     client: "LLM",
     title: "Ride Free",
     metric: "28%+ Conversion",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224214/LLM_6_1_gtbngk.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/raymond_1_re_1.mp4",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const WORKS = [
     client: "LLM",
     title: "Vision in Motion",
     metric: "33%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224208/llm4_1_xya95b.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439353/v6_1.mp4",
   },
   {
     id: 4,
@@ -36,7 +36,7 @@ const WORKS = [
     client: "LLM",
     title: "Power Redefined",
     metric: "38%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224204/llm_female_formal_1_tmvw62.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439351/v12_1.mp4",
   },
   {
     id: 5,
@@ -44,7 +44,7 @@ const WORKS = [
     client: "LLM",
     title: "Annual Fest 2026",
     metric: "14%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224199/LLM_formal_1_xalyqf.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439350/jujutsu_reel_p3.mp4",
   },
   {
     id: 6,
@@ -52,7 +52,7 @@ const WORKS = [
     client: "LLM",
     title: "Creative Studio",
     metric: "26%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224194/llm_3_1_rszely.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439349/EDIT-ICT.mp4",
   },
   {
     id: 7,
@@ -60,7 +60,7 @@ const WORKS = [
     client: "Raymond",
     title: "Luxury Meets Speed",
     metric: "15%+ Conversion",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439346/llm_3_1.mp4",
   },
   {
     id: 8,
@@ -68,7 +68,7 @@ const WORKS = [
     client: "jo motel",
     title: "Never Stop",
     metric: "24%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223979/v12_1_quwqet.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439332/V4_EXTRAFUEL-1.mp4",
   },
   {
     id: 9,
@@ -76,7 +76,7 @@ const WORKS = [
     client: "raymond",
     title: "Cinema Experience",
     metric: "17%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223913/raymond_1_re_1_f50kfv.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439331/V_Event.mp4",
   },
   {
     id: 10,
@@ -84,7 +84,7 @@ const WORKS = [
     client: "jo motel",
     title: "Open Happiness",
     metric: "43%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223886/v6_1_ik9n1i.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439313/1785486516433.publer.com.mp4",
   },
   {
     id: 11,
@@ -92,7 +92,7 @@ const WORKS = [
     client: "detaliens",
     title: "Never Stop",
     metric: "37%+ Conversion",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663509/bullet_boontq.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439326/bullet.mp4",
   },
   {
     id: 12,
@@ -100,7 +100,7 @@ const WORKS = [
     client: "Brand Monk",
     title: "Never Stop",
     metric: "51%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663500/Comp_1_rqrgz7.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439327/LLM_formal_1.mp4",
   },
   {
     id: 13,
