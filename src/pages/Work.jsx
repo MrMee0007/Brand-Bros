@@ -9,7 +9,7 @@ const WORKS = [
   {
     id: 1,
     tag: "Events",
-    client: "Club DJ",
+    client: "DETALIENS",
     title: "Beyond Limits",
     metric: "33%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/jawa_1.mp4",
@@ -17,7 +17,7 @@ const WORKS = [
   {
     id: 2,
     tag: "Product",
-    client: "LLM",
+    client: "RAYMOND",
     title: "Ride Free",
     metric: "28%+ Conversion",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/raymond_1_re_1.mp4",
@@ -25,7 +25,7 @@ const WORKS = [
   {
     id: 3,
     tag: "Product",
-    client: "LLM",
+    client: "JO MOTEL",
     title: "Vision in Motion",
     metric: "33%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439353/v6_1.mp4",
@@ -33,7 +33,7 @@ const WORKS = [
   {
     id: 4,
     tag: "Ads",
-    client: "LLM",
+    client: "JO MOTEL",
     title: "Power Redefined",
     metric: "38%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439351/v12_1.mp4",
@@ -41,7 +41,7 @@ const WORKS = [
   {
     id: 5,
     tag: "Events",
-    client: "LLM",
+    client: "BERRY BROS",
     title: "Annual Fest 2026",
     metric: "14%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439350/jujutsu_reel_p3.mp4",
@@ -49,7 +49,7 @@ const WORKS = [
   {
     id: 6,
     tag: "Social",
-    client: "LLM",
+    client: "PARTY",
     title: "Creative Studio",
     metric: "26%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439349/EDIT-ICT.mp4",
@@ -57,7 +57,7 @@ const WORKS = [
   {
     id: 7,
     tag: "Reels",
-    client: "Raymond",
+    client: "LLM",
     title: "Luxury Meets Speed",
     metric: "15%+ Conversion",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439346/llm_3_1.mp4",
@@ -65,7 +65,7 @@ const WORKS = [
   {
     id: 8,
     tag: "Reels",
-    client: "jo motel",
+    client: "XTRAFUEL",
     title: "Never Stop",
     metric: "24%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439332/V4_EXTRAFUEL-1.mp4",
@@ -73,7 +73,7 @@ const WORKS = [
   {
     id: 9,
     tag: "Product",
-    client: "raymond",
+    client: "BERRY BROS",
     title: "Cinema Experience",
     metric: "17%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439331/V_Event.mp4",
@@ -81,7 +81,7 @@ const WORKS = [
   {
     id: 10,
     tag: "Ads",
-    client: "jo motel",
+    client: "PARTY",
     title: "Open Happiness",
     metric: "43%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439313/1785486516433.publer.com.mp4",
@@ -97,7 +97,7 @@ const WORKS = [
   {
     id: 12,
     tag: "Reels",
-    client: "Brand Monk",
+    client: "LLM",
     title: "Never Stop",
     metric: "51%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439327/LLM_formal_1.mp4",
@@ -108,15 +108,15 @@ const WORKS = [
     client: "Berry Bros",
     title: "Never Stop",
     metric: "22%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663274/shop_ugc1_cvctcv.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786446285/berrybros_v14_p3_1.mp4",
   },
   {
     id: 14,
     tag: "Reels",
-    client: "DETALIENS",
+    client: "BERRY BROS",
     title: "Never Stop",
     metric: "16%+ Conversion",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663505/jawa_1_wrstl2.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786446591/dessert_1.mp4",
   },
   {
     id: 15,
