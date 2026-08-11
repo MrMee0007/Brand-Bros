@@ -260,7 +260,7 @@ const REELS = [
     title: "Midnight Run",
     metric: "4.8x ROAS",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784223886/v6_1_ik9n1i.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/raymond_1_re_1.mp4",
     rot: -32,
     x: -600,
     y: 90,
@@ -271,7 +271,7 @@ const REELS = [
     title: "Sensory Universe",
     metric: "1.2M Views",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224214/LLM_6_1_gtbngk.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439351/v12_1.mp4",
     rot: -24,
     x: -450,
     y: 55,
@@ -282,7 +282,7 @@ const REELS = [
     title: "Light on Glass",
     metric: "+87% CVR",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439355/jawa_1.mp4",
     rot: -16,
     x: -300,
     y: 25,
@@ -293,7 +293,7 @@ const REELS = [
     title: "Modern Luxury",
     metric: "+240% Engage",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785487009/1785486516433.publer.com_vsrrys.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439350/jujutsu_reel_p3.mp4",
     rot: -8,
     x: -170,
     y: 8,
@@ -304,7 +304,7 @@ const REELS = [
     title: "Center",
     metric: "8.4M Reach",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784998381/Tng_1_redo_1_1_m0aoks.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439353/v6_1.mp4",
     rot: 0,
     x: 0,
     y: 0,
@@ -315,7 +315,7 @@ const REELS = [
     title: "Golden Hour",
     metric: "3.2M Views",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663274/shop_ugc1_cvctcv.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439349/EDIT-ICT.mp4",
     rot: 8,
     x: 170,
     y: 8,
@@ -326,7 +326,7 @@ const REELS = [
     title: "Urban Flow",
     metric: "+195% Reach",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224025/raymond_2_re_1_pkzjkh.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439346/llm_3_1.mp4",
     rot: 16,
     x: 300,
     y: 25,
@@ -337,7 +337,7 @@ const REELS = [
     title: "Motion Story",
     metric: "7.1M Views",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663112/jujutsu_reel_p3_rmnq4c.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439332/V4_EXTRAFUEL-1.mp4",
     rot: 24,
     x: 450,
     y: 55,
@@ -348,7 +348,7 @@ const REELS = [
     title: "Final Cut",
     metric: "+420% Engagement",
     video:
-      "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663505/jawa_1_wrstl2.mp4",
+      "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439327/LLM_formal_1.mp4",
     rot: 32,
     x: 600,
     y: 90,
