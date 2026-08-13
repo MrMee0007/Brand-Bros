@@ -121,18 +121,18 @@ const WORKS = [
   {
     id: 15,
     tag: "Reels",
-    client: "BERRY BROS",
+    client: "LLM",
     title: "Never Stop",
     metric: "19%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784663112/jujutsu_reel_p3_rmnq4c.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616117/LLM_6_1.mp4",
   },
   {
     id: 16,
     tag: "Reels",
-    client: "CSTECH",
+    client: "RAYMOND",
     title: "Never Stop",
     metric: "11% Conversion",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012751/0724_1_1_vxxvq9.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616212/raymond_2_re_1.mp4",
   },
   {
     id: 17,
@@ -148,7 +148,7 @@ const WORKS = [
     client: "LLM",
     title: "Beyond Limits",
     metric: "40%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1784224243/LLM_1_rueiqj.mp4",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616106/llm_female_formal_1.mp4",
   },
 ];
 
