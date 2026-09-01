@@ -1,10 +1,18 @@
-// import { useState, useMemo, useCallback, memo, useRef } from "react";
-// import { motion, AnimatePresence, useInView } from "framer-motion";
-// import { Play, X } from "lucide-react";
+import {
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+  memo,
+  useRef,
+} from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { Play, X } from "lucide-react";
 
-// /* ─── Data ─────────────────────────────────────────── */
- const CATEGORIES = ["All", "Promotion", "Reels", "Product", "Ads", "Events", "Social"];
+/* ─── Categories ──────────────────────────────────── */
+const CATEGORIES = ["All", "Promotion", "Reels", "Product", "Ads", "Events", "Social"];
 
+/* ─── Portfolio data ─────────────────────────────── */
 const WORKS = [
   {
     id: 1,
@@ -89,8 +97,8 @@ const WORKS = [
   {
     id: 11,
     tag: "Reels",
-    client: "detaliens",
-    title: "Never Stop",
+    client: "DETALIENS",
+    title: "Bullet Run",
     metric: "37%+ Conversion",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439326/bullet.mp4",
   },
@@ -98,15 +106,15 @@ const WORKS = [
     id: 12,
     tag: "Reels",
     client: "LLM",
-    title: "Never Stop",
+    title: "Formal Edge",
     metric: "51%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786439327/LLM_formal_1.mp4",
   },
   {
     id: 13,
     tag: "Reels",
-    client: "Berry Bros",
-    title: "Never Stop",
+    client: "BERRY BROS",
+    title: "Berry Vibes",
     metric: "22%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786446285/berrybros_v14_p3_1.mp4",
   },
@@ -114,7 +122,7 @@ const WORKS = [
     id: 14,
     tag: "Reels",
     client: "BERRY BROS",
-    title: "Never Stop",
+    title: "Dessert Drop",
     metric: "16%+ Conversion",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786446591/dessert_1.mp4",
   },
@@ -122,7 +130,7 @@ const WORKS = [
     id: 15,
     tag: "Reels",
     client: "LLM",
-    title: "Never Stop",
+    title: "Season Six",
     metric: "19%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616117/LLM_6_1.mp4",
   },
@@ -130,7 +138,7 @@ const WORKS = [
     id: 16,
     tag: "Reels",
     client: "RAYMOND",
-    title: "Never Stop",
+    title: "Raymond II",
     metric: "11% Conversion",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616212/raymond_2_re_1.mp4",
   },
@@ -138,7 +146,7 @@ const WORKS = [
     id: 17,
     tag: "Reels",
     client: "BERRY BROS",
-    title: "Never Stop",
+    title: "Dessert Series",
     metric: "24%+ Engagement",
     video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012731/dessert_1_lwlpz3.mp4",
   },
@@ -152,461 +160,189 @@ const WORKS = [
   },
 ];
 
+/* ─── Helper: derive Cloudinary poster from video URL ─── */
+function getPoster(videoUrl) {
+  // Transform: /video/upload/vXXXX/name.mp4
+  //         → /video/upload/so_0,w_400,h_711,c_fill/vXXXX/name.jpg
+  return videoUrl
+    .replace("/video/upload/", "/video/upload/so_0,w_400,h_711,c_fill/")
+    .replace(/\.mp4$/, ".jpg");
+}
 
-
-// /* ─── 9:16 Reel Card ───────────────────────────────── */
-// const WorkCard = memo(({ item, index, inView, onPlay }) => {
-//   const videoRef = useRef(null);
-
-//   return (
-//     <motion.div
-//       initial={{ opacity: 0, y: 35 }}
-//       animate={inView ? { opacity: 1, y: 0 } : {}}
-//       transition={{
-//         duration: 0.55,
-//         delay: index * 0.045,
-//         ease: [0.2, 0, 0, 1],
-//       }}
-//       className="group cursor-pointer"
-//       onClick={() => onPlay(item)}
-//       onMouseEnter={() => {
-//         if (videoRef.current) {
-//           videoRef.current.play().catch(() => {});
-//         }
-//       }}
-//       onMouseLeave={() => {
-//         if (videoRef.current) {
-//           videoRef.current.pause();
-//           videoRef.current.currentTime = 0;
-//         }
-//       }}
-//     >
-//       <div className="aspect-[9/16] w-full rounded-2xl overflow-hidden border border-white/6 relative hover:border-[#F5C200]/45 transition-all duration-500">
-
-//         <video
-//           ref={videoRef}
-//           src={item.video}
-//           muted
-//           loop
-//           playsInline
-//           preload="auto"
-//           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-//         />
-
-//         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
-
-//         <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
-//           <span className="text-[8px] uppercase tracking-[0.2em] text-white/40">
-//             {item.tag}
-//           </span>
-
-//           <span className="text-[8px] text-red-400 font-bold">
-//             ● LIVE
-//           </span>
-//         </div>
-
-//         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-//           <div className="w-14 h-14 rounded-full bg-[#F5C200] flex items-center justify-center">
-//             <Play
-//               size={22}
-//               fill="black"
-//               stroke="none"
-//               className="ml-1"
-//             />
-//           </div>
-//         </div>
-
-//         <div className="absolute bottom-0 left-0 right-0 p-4">
-//           <p className="text-[9px] uppercase tracking-[0.15em] text-white/40">
-//             {item.client}
-//           </p>
-
-//           <h3 className="text-white font-semibold mt-1">
-//             {item.title}
-//           </h3>
-
-//           <p className="text-[#F5C200] text-xs mt-1">
-//             {item.metric}
-//           </p>
-//         </div>
-//       </div>
-//     </motion.div>
-//   );
-// });
-
-// /* ─── Page ────────────────────────────────────────── */
-// export default function Work() {
-//   const [active, setActive]   = useState("All");
-//   const [modal, setModal]     = useState(null);
-//   const handleFilter = useCallback((cat) => setActive(cat), []);
-
-//   const filtered = useMemo(
-//     () => (active === "All" ? WORKS : WORKS.filter((w) => w.tag === active)),
-//     [active]
-//   );
-
-//   const ref    = useRef(null);
-//   const inView = useInView(ref, { once: false, margin: "-40px" });
-
-//   return (
-//     <>
-//       <div className="min-h-screen pt-32 pb-24 px-6 bg-black">
-//         <div className="max-w-7xl mx-auto">
-
-//           {/* Hero */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 36 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.85, ease: [0.2, 0, 0, 1] }}
-//             className="mb-16"
-//           >
-//             <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-4">[ Selected Works ]</p>
-//             <h1 className="font-heading text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.87] mb-5">
-//               <span className="text-[var(--brand)]">Our<br />Portfolio</span>
-//             </h1>
-//             <div className="flex items-center gap-3 mb-4">
-//               <div className="w-4 h-px bg-[var(--brand)]/50" />
-//               <p className="text-white/35 text-xs tracking-[0.2em] uppercase">9:16 Format · Built for Social</p>
-//             </div>
-//             <p className="text-white/40 text-sm leading-relaxed max-w-md">
-//               A curated collection of reels, brand films, and digital experiences
-//               built for ambitious brands across India.
-//             </p>
-//           </motion.div>
-
-//           {/* Filter pills */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 18 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.65, delay: 0.2 }}
-//             className="flex flex-wrap gap-2 mb-12"
-//           >
-//             {CATEGORIES.map((cat) => (
-//               <button
-//                 key={cat}
-//                 onClick={() => handleFilter(cat)}
-//                 className={`px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-[0.2em] transition-all duration-300 ${
-//                   active === cat
-//                     ? "bg-[#F5C200] text-black shadow-[0_0_20px_rgba(245,194,0,0.35)]"
-//                     : "bg-white/4 border border-white/8 text-white/45 hover:bg-[#F5C200]/10 hover:text-[#F5C200] hover:border-[#F5C200]/20"
-//                 }`}
-//               >
-//                 {cat}
-//               </button>
-//             ))}
-//           </motion.div>
-
-//           {/* 9:16 Grid */}
-//           <div ref={ref} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
-//             <AnimatePresence mode="popLayout">
-//               {filtered.map((item, i) => (
-//                 <WorkCard
-//                   key={item.id}
-//                   item={item}
-//                   index={i}
-//                   inView={inView}
-//                   onPlay={setModal}
-//                 />
-//               ))}
-//             </AnimatePresence>
-//           </div>
-
-//           {filtered.length === 0 && (
-//             <div className="text-center py-20 text-white/20 text-sm">No projects in this category yet.</div>
-//           )}
-//         </div>
-//       </div>
-
-//       {/* Modal — 9:16 */}
-//       <AnimatePresence>
-//         {modal && (
-//           <motion.div
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             exit={{ opacity: 0 }}
-//             className="fixed inset-0 z-[200] bg-black/95 backdrop-blur-xl flex items-center justify-center p-6"
-//             onClick={() => setModal(null)}
-//           >
-//             <button
-//               onClick={() => setModal(null)}
-//               className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/8 flex items-center justify-center hover:bg-[var(--brand)] hover:text-black transition-all"
-//             >
-//               <X size={16} />
-//             </button>
-//             <motion.div
-//               initial={{ scale: 0.88, opacity: 0 }}
-//               animate={{ scale: 1, opacity: 1 }}
-//               exit={{ scale: 0.88, opacity: 0 }}
-//               transition={{ duration: 0.3, ease: [0.2, 0, 0, 1] }}
-//               className="max-h-[90vh] aspect-[9/16] rounded-2xl overflow-hidden relative border border-white/10"
-//               onClick={(e) => e.stopPropagation()}
-//             >
-//               <video
-//   src={modal.video}
-//   controls
-//   autoPlay
-//   playsInline
-//   className="absolute inset-0 w-full h-full object-contain bg-black"
-// />
-//               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-black/20 flex flex-col justify-end p-8">
-//                 <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[var(--brand)] mb-2">{modal.tag}</span>
-//                 <p className="font-heading text-3xl text-[var(--brand)] mb-1">{modal.metric}</p>
-//                 <h3 className="font-sans font-semibold text-lg text-white">{modal.title}</h3>
-//                 <p className="text-sm text-white/40 mt-0.5">{modal.client}</p>
-//                 <div className="mt-6 flex items-center gap-3">
-//                   <div className="w-10 h-10 rounded-full bg-[var(--brand)] flex items-center justify-center">
-//                     <Play size={14} fill="black" stroke="none" className="ml-0.5" />
-//                   </div>
-//                   {/* <span className="text-[10px] text-white/35 uppercase tracking-[0.15em]"></span> */}
-//                 </div>
-//               </div>
-//             </motion.div>
-//           </motion.div>
-//         )}
-//       </AnimatePresence>
-//     </>
-//   );
-// }
-
-import {
-  useState,
-  useMemo,
-  useCallback,
-  useEffect,
-  memo,
-  useRef,
-} from "react";
-
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
-
-import {
-  Play,
-  X,
-} from "lucide-react";
-
+/* ─── 9:16 Reel Card ──────────────────────────────── */
 const WorkCard = memo(({ item, index, inView, onPlay }) => {
+  const containerRef = useRef(null);
   const videoRef = useRef(null);
+  const [videoSrc, setVideoSrc] = useState(null); // lazy: only set when card visible
+
+  /* Set video src only when card enters viewport */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVideoSrc(item.video);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [item.video]);
+
+  const handleMouseEnter = useCallback(() => {
+    if (videoRef.current && videoSrc) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [videoSrc]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, []);
 
   return (
     <motion.div
+      ref={containerRef}
       initial={{ opacity: 0, y: 35 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: .55,
-        delay: index * .05,
-        ease: [0.2,0,0,1],
-      }}
+      transition={{ duration: 0.55, delay: index * 0.045, ease: [0.2, 0, 0, 1] }}
       className="group cursor-pointer"
       onClick={() => onPlay(item)}
-      onMouseEnter={() => {
-        if(videoRef.current){
-          videoRef.current.play().catch(()=>{});
-        }
-      }}
-      onMouseLeave={()=>{
-        if(videoRef.current){
-          videoRef.current.pause();
-          videoRef.current.currentTime=0;
-        }
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-
       <div className="aspect-[9/16] w-full rounded-2xl overflow-hidden border border-white/10 relative hover:border-[#F5C200]/50 transition-all duration-500">
 
-        <video
-          ref={videoRef}
-          src={item.video}
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+        {/* Poster shown until video loads */}
+        <img
+          src={getPoster(item.video)}
+          alt={item.title}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="lazy"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent"/>
+        {/* Video — src set lazily */}
+        {videoSrc && (
+          <video
+            ref={videoRef}
+            src={videoSrc}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105"
+          />
+        )}
 
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+
+        {/* Tag */}
         <div className="absolute top-3 left-3 right-3 flex justify-between">
-
           <span className="text-[8px] uppercase tracking-[0.2em] text-white/40">
             {item.tag}
           </span>
-
         </div>
 
+        {/* Play button (visible on hover) */}
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-
-          <div className="w-14 h-14 rounded-full bg-[#F5C200] flex items-center justify-center">
-
-            <Play
-              size={22}
-              fill="black"
-              stroke="none"
-              className="ml-1"
-            />
-
+          <div className="w-14 h-14 rounded-full bg-[#F5C200] flex items-center justify-center shadow-[0_0_30px_rgba(245,194,0,0.5)]">
+            <Play size={22} fill="black" stroke="none" className="ml-1" />
           </div>
-
         </div>
 
+        {/* Bottom info */}
         <div className="absolute bottom-0 left-0 right-0 p-4">
-
           <p className="text-[9px] uppercase tracking-[0.15em] text-white/40">
             {item.client}
           </p>
-
-          <p className="text-[#F5C200] text-xs mt-1">
-            {item.metric}
-          </p>
-
+          <h3 className="text-white font-semibold text-sm mt-0.5">{item.title}</h3>
+          <p className="text-[#F5C200] text-xs mt-1">{item.metric}</p>
         </div>
-
       </div>
-
     </motion.div>
   );
 });
 
-export default function Work() {
+WorkCard.displayName = "WorkCard";
 
+/* ─── Page ────────────────────────────────────────── */
+export default function Work() {
   const [active, setActive] = useState("All");
   const [modal, setModal] = useState(null);
 
-  const videoRef = useRef(null);
+  const handleFilter = useCallback((cat) => setActive(cat), []);
 
-  const handleFilter = useCallback((cat) => {
-    setActive(cat);
+  const filtered = useMemo(
+    () => (active === "All" ? WORKS : WORKS.filter((w) => w.tag === active)),
+    [active]
+  );
+
+  const gridRef = useRef(null);
+  const inView = useInView(gridRef, { once: false, margin: "-40px" });
+
+  /* Close modal on Escape key */
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") setModal(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const filtered = useMemo(() => {
-    return active === "All"
-      ? WORKS
-      : WORKS.filter((item) => item.tag === active);
-  }, [active]);
-
-  const ref = useRef(null);
-
-  const inView = useInView(ref, {
-    once: false,
-    margin: "-40px",
-  });
-
-  /* Automatically enter fullscreen */
-
+  /* Lock body scroll while modal open */
   useEffect(() => {
-    if (!modal || !videoRef.current) return;
-
-    const video = videoRef.current;
-
-    const openFullscreen = async () => {
-      try {
-        if (video.requestFullscreen) {
-          await video.requestFullscreen();
-        } else if (video.webkitRequestFullscreen) {
-          video.webkitRequestFullscreen();
-        } else if (video.msRequestFullscreen) {
-          video.msRequestFullscreen();
-        }
-
-        await video.play();
-
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    openFullscreen();
-
+    document.body.style.overflow = modal ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [modal]);
-
-  /* Close modal when fullscreen exits */
-
-  useEffect(() => {
-
-    const handleExit = () => {
-      if (!document.fullscreenElement) {
-        setModal(null);
-      }
-    };
-
-    document.addEventListener(
-      "fullscreenchange",
-      handleExit
-    );
-
-    return () =>
-      document.removeEventListener(
-        "fullscreenchange",
-        handleExit
-      );
-
-  }, []);
 
   return (
     <>
       <div className="min-h-screen pt-32 pb-24 px-6 bg-black">
-
         <div className="max-w-7xl mx-auto">
 
-          {/* Hero */}
-
+          {/* ── Hero ── */}
           <motion.div
             initial={{ opacity: 0, y: 36 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.85,
-              ease: [0.2, 0, 0, 1],
-            }}
+            transition={{ duration: 0.85, ease: [0.2, 0, 0, 1] }}
             className="mb-16"
           >
-
-            <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-4">
+            <p className="text-[#F5C200] uppercase tracking-[0.3em] text-[10px] mb-4">
               [ Selected Works ]
             </p>
-
-            <h1 className="font-heading text-[clamp(3.5rem,9vw,7.5rem)] leading-[0.87] mb-5">
-              <span className="text-[var(--brand)]">
-                Our
-                <br />
-                Portfolio
-              </span>
+            <h1
+              className="font-heading text-[#F5C200] leading-[0.87] mb-5"
+              style={{ fontSize: "clamp(3.5rem, 9vw, 7.5rem)" }}
+            >
+              Our
+              <br />
+              Portfolio
             </h1>
-
             <div className="flex items-center gap-3 mb-4">
-
-              <div className="w-4 h-px bg-[var(--brand)]/50" />
-
+              <div className="w-4 h-px bg-[#F5C200]/50" />
               <p className="text-white/35 text-xs uppercase tracking-[0.2em]">
                 9:16 Format · Built for Social
               </p>
-
             </div>
-
             <p className="text-white/40 text-sm leading-relaxed max-w-md">
-              A curated collection of reels,
-              brand films and digital experiences
+              A curated collection of reels, brand films and digital experiences
               built for ambitious brands across India.
             </p>
-
           </motion.div>
 
-                    {/* Filter Pills */}
-
+          {/* ── Filter Pills ── */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: .65,
-              delay: .2,
-            }}
+            transition={{ duration: 0.65, delay: 0.2 }}
             className="flex flex-wrap gap-2 mb-12"
           >
-
             {CATEGORIES.map((cat) => (
-
               <button
                 key={cat}
                 onClick={() => handleFilter(cat)}
@@ -618,22 +354,16 @@ export default function Work() {
               >
                 {cat}
               </button>
-
             ))}
-
           </motion.div>
 
-          {/* Portfolio Grid */}
-
+          {/* ── Portfolio Grid ── */}
           <div
-            ref={ref}
+            ref={gridRef}
             className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4"
           >
-
             <AnimatePresence mode="popLayout">
-
               {filtered.map((item, index) => (
-
                 <WorkCard
                   key={item.id}
                   item={item}
@@ -641,110 +371,71 @@ export default function Work() {
                   inView={inView}
                   onPlay={setModal}
                 />
-
               ))}
-
             </AnimatePresence>
-
           </div>
 
           {filtered.length === 0 && (
-
             <div className="text-center py-20 text-white/25">
-
               <p className="text-sm uppercase tracking-[0.2em]">
-                No projects found.
+                No projects in this category yet.
               </p>
-
             </div>
-
           )}
-
         </div>
-
       </div>
 
-      {/* Fullscreen Modal */}
-
+      {/* ── Video Modal ── */}
       <AnimatePresence>
-
         {modal && (
-
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: .25 }}
-            className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-xl flex items-center justify-center"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[9999] bg-black/96 backdrop-blur-xl flex items-center justify-center p-4"
             onClick={() => setModal(null)}
           >
-            {/* Close Button */}
+            {/* Close */}
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setModal(null);
-              }}
-              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/10 hover:bg-[#F5C200] hover:text-black transition-all duration-300"
+              onClick={(e) => { e.stopPropagation(); setModal(null); }}
+              className="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-center hover:bg-[#F5C200] hover:text-black transition-all duration-300"
+              aria-label="Close"
             >
               <X size={20} />
             </button>
 
-            {/* Video */}
-            <motion.video
-              ref={videoRef}
-              initial={{
-                scale: 0.9,
-                opacity: 0,
-              }}
-              animate={{
-                scale: 1,
-                opacity: 1,
-              }}
-              exit={{
-                scale: 0.9,
-                opacity: 0,
-              }}
-              transition={{
-                duration: 0.35,
-                ease: [0.2, 0, 0, 1],
-              }}
-              src={modal.video}
-              controls
-              autoPlay
-              playsInline
-              preload="auto"
-              controlsList="nodownload"
-              className="max-h-screen max-w-screen object-contain"
+            {/* Video container */}
+            <motion.div
+              initial={{ scale: 0.88, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.88, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.2, 0, 0, 1] }}
+              className="relative max-h-[90vh] aspect-[9/16] rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <video
+                src={modal.video}
+                controls
+                autoPlay
+                playsInline
+                controlsList="nodownload"
+                className="w-full h-full object-contain bg-black"
+              />
 
-            {/* Info Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/70 to-transparent p-8 pointer-events-none">
-
-              <span className="text-[10px] uppercase tracking-[0.25em] text-[#F5C200] font-bold">
-                {modal.tag}
-              </span>
-
-              <h2 className="font-heading text-3xl text-white mt-2">
-                {modal.title}
-              </h2>
-
-              <p className="text-[#F5C200] text-lg mt-1">
-                {modal.metric}
-              </p>
-
-              <p className="text-white/50 text-sm mt-2">
-                {modal.client}
-              </p>
-
-            </div>
-
+              {/* Info overlay */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent p-6 pointer-events-none">
+                <span className="text-[9px] uppercase tracking-[0.25em] text-[#F5C200] font-bold">
+                  {modal.tag}
+                </span>
+                <h3 className="font-heading text-2xl text-white mt-1">{modal.title}</h3>
+                <p className="text-[#F5C200] text-sm mt-0.5">{modal.metric}</p>
+                <p className="text-white/40 text-xs mt-1">{modal.client}</p>
+              </div>
+            </motion.div>
           </motion.div>
-
         )}
-
       </AnimatePresence>
-
     </>
   );
 }
