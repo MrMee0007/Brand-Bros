@@ -11,7 +11,24 @@ import { Play, X } from "lucide-react";
 import { useSEO } from "../hooks/useSEO";
 
 /* ─── Categories ──────────────────────────────────── */
-const CATEGORIES = ["All", "Food & Bevarages", "Real State", "Hotels & Resorts","Promotion", "Product Shoot", "Clothing & Fashion"];
+const CATEGORIES = ["All", "Real State", "Food & Bevarages", "Hotels & Resorts","Promotion", "Product Shoot", "Clothing & Fashion"];
+
+const METRICS = [
+  "18%+ Engagement",
+  "24%+ Reach",
+  "31%+ Saved Posts",
+  "36%+ Conversion",
+  "14%+ CTR",
+  "21%+ Watch Time",
+  "29%+ Clicks",
+  "42%+ Leads",
+  "16%+ Follower Growth",
+  "33%+ Retention",
+  "27%+ Story Taps",
+  "39%+ Revenue Lift",
+];
+
+const getWorkMetric = (id) => METRICS[(id - 1) % METRICS.length];
 
 /* ─── Portfolio data ─────────────────────────────── */
 const WORKS = [
@@ -145,7 +162,7 @@ const WORKS = [
   },
   {
     id: 17,
-    tag: "Clothing & Fashion",
+    tag: "Food & Bevarages",
     client: "LLM",
     title: "Beyond Limits",
     metric: "40%+ Engagement",
@@ -223,6 +240,86 @@ const WORKS = [
     metric: "40%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791293945/berrybros_v8_p1.mp4",
   },
+    {
+    id: 27,
+    tag: "Promotion",
+    client: "8 Ball Pool",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369236/Sample_v1.mp4",
+  },
+    {
+    id: 28,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369241/berrybros_v1_p2.mp4",
+  },
+    {
+    id: 29,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369282/berrybros_v16_p1.mp4",
+  },
+    {
+    id: 30,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369281/berrybros_v4_p1.mp4",
+  },
+    {
+    id: 31,
+    tag: "Promotion",
+    client: "XTRAFUEL",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369338/xtrafuel_v1_p1.mp4",
+  },
+    {
+    id: 32,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369375/berrybros_v7_p1.mp4",
+  },
+    {
+    id: 33,
+    tag: "Promotion",
+    client: "XTRAFUEL",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369378/xtrafuel_v10_p1.mp4",
+  },
+    {
+    id: 34,
+    tag: "Real State",
+    client: "Think n Grow",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369384/TnG_v8_p1.mp4",
+  },
+    {
+    id: 35,
+    tag: "Real State",
+    client: "Think n Grow",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369389/TnG_victoryfloors_p2.mp4",
+  },
+    {
+    id: 36,
+    tag: "Real State",
+    client: "Think n Grow",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/n8tbvqpb/video/upload/v1791369394/TnG_v6_p2.mp4",
+  },
 ];
 
 /* ─── Helper: derive Cloudinary poster from video URL ─── */
@@ -271,6 +368,8 @@ const WorkCard = memo(({ item, index, inView, onPlay }) => {
       videoRef.current.currentTime = 0;
     }
   }, []);
+
+  const metric = getWorkMetric(item.id);
 
   return (
     <motion.div
@@ -328,7 +427,7 @@ const WorkCard = memo(({ item, index, inView, onPlay }) => {
             {item.client}
           </p>
           <h3 className="text-white font-semibold text-sm mt-0.5">{item.title}</h3>
-          <p className="text-[#F5C200] text-xs mt-1">{item.metric}</p>
+          <p className="text-[#F5C200] text-xs mt-1">{metric}</p>
         </div>
       </div>
     </motion.div>
@@ -494,7 +593,7 @@ export default function Work() {
                   {modal.tag}
                 </span>
                 <h3 className="font-heading text-2xl text-white mt-1">{modal.title}</h3>
-                <p className="text-[#F5C200] text-sm mt-0.5">{modal.metric}</p>
+                <p className="text-[#F5C200] text-sm mt-0.5">{getWorkMetric(modal.id)}</p>
                 <p className="text-white/40 text-xs mt-1">{modal.client}</p>
               </div>
             </motion.div>

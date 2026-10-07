@@ -26,8 +26,8 @@ const ADDONS = [
   {
     icon: Aperture,
     title: "DRONE SHOOT",
-    desc: "Licensed 4K aerial videography & dynamic FPV perspectives.",
-    available: true,
+    desc: "Licensed 4K aerial videography & dynamic FPV perspectives. Launching soon.",
+    available: false,
   },
 ];
 
@@ -213,19 +213,36 @@ export default function PricingSection() {
                 </p>
 
                 {/* Availability Badge */}
-                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F5C200]/10 border border-[#F5C200]/30 text-[#F5C200] text-[10px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(245,194,0,0.06)]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] animate-pulse" />
-                  <span>Available</span>
-                </div>
+                {a.available ? (
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F5C200]/10 border border-[#F5C200]/30 text-[#F5C200] text-[10px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(245,194,0,0.06)]">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] animate-pulse" />
+                    <span>Available</span>
+                  </div>
+                ) : (
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 text-[10px] font-bold tracking-widest uppercase mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                    <span>Coming Soon</span>
+                  </div>
+                )}
 
                 {/* CTA Link */}
-                <Link
-                  to="/contact"
-                  className="w-full py-2.5 rounded-lg border border-white/15 text-white/80 hover:text-black hover:bg-[#F5C200] hover:border-[#F5C200] text-[9px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-1.5"
-                >
-                  <span>Inquire Now</span>
-                  <span className="text-xs">→</span>
-                </Link>
+                {a.available ? (
+                  <Link
+                    to="/contact"
+                    className="w-full py-2.5 rounded-lg border border-white/15 text-white/80 hover:text-black hover:bg-[#F5C200] hover:border-[#F5C200] text-[9px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-1.5"
+                  >
+                    <span>Inquire Now</span>
+                    <span className="text-xs">→</span>
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    disabled
+                    className="w-full py-2.5 rounded-lg border border-white/10 text-white/40 bg-white/5 text-[9px] font-bold uppercase tracking-widest cursor-not-allowed"
+                  >
+                    Coming Soon
+                  </button>
+                )}
               </motion.div>
             );
           })}

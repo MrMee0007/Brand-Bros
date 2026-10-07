@@ -294,11 +294,11 @@ export default function About() {
       </section>
 
       {/* ═══ MARQUEE ─ reversed ══════════════════ */}
-      <div className="overflow-hidden border-y border-white/5 py-4 bg-black">
-        <div className="flex animate-marquee-right whitespace-nowrap select-none">
-          {[...Array(20)].map((_, i) => (
-            <span key={i} className="mx-6 text-[10px] uppercase tracking-[0.25em] text-white/20">
-              Create <span className="text-[var(--brand)]/40 mx-1">✦</span> Edit <span className="text-[var(--brand)]/40 mx-1">✦</span> Inspire <span className="text-[var(--brand)]/40 mx-1">✦</span>
+      <div className="overflow-hidden border-y border-white/10 bg-[#050505] py-6 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]">
+        <div className="flex w-max min-w-full animate-marquee-right whitespace-nowrap select-none">
+          {[...Array(24)].map((_, i) => (
+            <span key={i} className="mx-10 text-[12px] sm:text-[13px] uppercase tracking-[0.45em] text-white/15">
+              Create <span className="text-[var(--brand)]/60 mx-3">✦</span> Edit <span className="text-[var(--brand)]/60 mx-3">✦</span> Inspire <span className="text-[var(--brand)]/60 mx-3">✦</span>
             </span>
           ))}
         </div>

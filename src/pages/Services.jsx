@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  ChevronDown, ArrowRight,
+  ChevronDown, ArrowRight, ArrowUpRight,
   Film, LayoutGrid, Megaphone, Camera, TrendingUp, Users,
-  Star, Zap, Globe, Cpu,
+  Star, Zap, Globe, Cpu, Sparkles, ShieldCheck,
 } from "lucide-react";
 import creatorImg  from "../assets/creator.png";
 import businessImg from "../assets/business.jpeg";
@@ -84,27 +84,31 @@ function SubCard({ sub, index, inView }) {
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="border border-white/10 bg-[#111] rounded-2xl p-6 hover:border-[#F5C200]/35 hover:bg-[#141414] transition-all duration-400 group"
+      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.2, 0, 0, 1] }}
+      whileHover={{ y: -6, scale: 1.01 }}
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(17,17,17,0.96),rgba(10,10,10,0.96))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] transition-all duration-400"
     >
-      <div className="flex items-center gap-3 mb-4">
-        <span className="font-heading text-[#F5C200] text-base tracking-widest">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-        <div className="flex-1 h-px bg-white/8 group-hover:bg-[#F5C200]/20 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,194,0,0.15),transparent_38%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="relative z-10">
+        <div className="flex items-center gap-3 mb-4">
+          <span className="font-heading text-[#F5C200] text-base tracking-[0.2em]">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="flex-1 h-px bg-white/8 group-hover:bg-[#F5C200]/30 transition-colors duration-300" />
+        </div>
+        <h3 className="font-sans font-semibold text-white text-sm mb-2 group-hover:text-[#F5C200] transition-colors duration-300">
+          {sub.title}
+        </h3>
+        <p className="text-white/40 text-xs leading-relaxed mb-4">{sub.desc}</p>
+        <ul className="space-y-1.5">
+          {sub.items.map((item) => (
+            <li key={item} className="flex items-start gap-2 text-xs text-white/55">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] flex-shrink-0 mt-1.5 shadow-[0_0_16px_rgba(245,194,0,0.7)]" />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-      <h3 className="font-sans font-semibold text-white text-sm mb-2 group-hover:text-[#F5C200] transition-colors duration-300">
-        {sub.title}
-      </h3>
-      <p className="text-white/40 text-xs leading-relaxed mb-4">{sub.desc}</p>
-      <ul className="space-y-1.5">
-        {sub.items.map((item) => (
-          <li key={item} className="flex items-start gap-2 text-xs text-white/50">
-            <span className="w-1 h-1 rounded-full bg-[#F5C200] flex-shrink-0 mt-1.5" />
-            {item}
-          </li>
-        ))}
-      </ul>
     </motion.div>
   );
 }
@@ -114,24 +118,31 @@ function ServiceItem({ s, isOpen, onToggle }) {
   const bodyRef = useRef(null);
   const inView  = useInView(bodyRef, { once: true, margin: "-40px" });
   const Icon    = s.icon;
+  const subGridClass =
+    s.subServices.length <= 1
+      ? "grid grid-cols-1 gap-4 mb-0"
+      : s.subServices.length <= 2
+        ? "grid sm:grid-cols-2 gap-4 mb-4"
+        : "grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6";
 
   return (
-    <article className="border-b border-white/8 last:border-b-0">
-      {/* Header button */}
+    <article className="relative border-b border-white/8 last:border-b-0 overflow-hidden">
+      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-[#F5C200]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <button
         onClick={onToggle}
-        className="group flex w-full items-center justify-between gap-6 py-8 md:py-10 text-left hover:text-[#F5C200] transition-colors duration-300"
+        className="group relative flex w-full items-center justify-between gap-6 py-8 md:py-10 text-left transition-colors duration-300"
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-6 md:gap-10">
-          {/* Number */}
           <span className="font-heading text-3xl md:text-4xl text-[#F5C200]/40 group-hover:text-[#F5C200] transition-colors duration-300 w-14 flex-shrink-0">
             {s.number}
           </span>
-          {/* Icon circle */}
-          <div className="hidden sm:flex w-12 h-12 rounded-full border border-white/10 group-hover:border-[#F5C200]/50 items-center justify-center flex-shrink-0 transition-colors duration-300">
+          <motion.div
+            whileHover={{ rotate: 8, scale: 1.06 }}
+            className="hidden sm:flex w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] group-hover:border-[#F5C200]/50 items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(245,194,0,0.08)] transition-all duration-300"
+          >
             <Icon size={18} className="text-white/40 group-hover:text-[#F5C200] transition-colors duration-300" strokeWidth={1.5} />
-          </div>
+          </motion.div>
           <div>
             <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl leading-tight text-white group-hover:text-[#F5C200] transition-colors duration-300">
               {s.title}
@@ -139,7 +150,7 @@ function ServiceItem({ s, isOpen, onToggle }) {
             <p className="text-white/35 text-sm mt-1 italic">{s.tagline}</p>
           </div>
         </div>
-        <div className={`w-10 h-10 rounded-full border border-white/10 group-hover:border-[#F5C200] flex items-center justify-center flex-shrink-0 transition-all duration-400 ${isOpen ? "bg-[#F5C200] border-[#F5C200]" : ""}`}>
+        <div className={`w-10 h-10 rounded-full border border-white/10 group-hover:border-[#F5C200] flex items-center justify-center flex-shrink-0 transition-all duration-400 ${isOpen ? "bg-[#F5C200] border-[#F5C200] shadow-[0_0_30px_rgba(245,194,0,0.5)]" : ""}`}>
           <ChevronDown
             size={18}
             className={`transition-transform duration-500 ${isOpen ? "rotate-180 text-black" : "text-white/40 group-hover:text-[#F5C200]"}`}
@@ -147,63 +158,75 @@ function ServiceItem({ s, isOpen, onToggle }) {
         </div>
       </button>
 
-      {/* Expandable body */}
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
+            transition={{ duration: 0.55, ease: [0.2, 0, 0, 1] }}
             className="overflow-hidden"
             ref={bodyRef}
           >
             <div className="pb-12">
-              {/* Intro + image */}
-              <div className="grid md:grid-cols-5 gap-8 mb-10">
-                <div className="md:col-span-3">
+              <div className="grid md:grid-cols-[1.5fr_1fr] gap-6 mb-6 items-stretch">
+                <motion.div
+                  initial={{ opacity: 0, x: -18 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.45 }}
+                  className="flex flex-col justify-center"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#F5C200]/20 bg-[#F5C200]/5 px-3 py-1.5 mb-4 w-fit">
+                    <Sparkles size={12} className="text-[#F5C200]" />
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#F5C200]">Signature Systems</span>
+                  </div>
                   <p className="text-white/55 text-base leading-relaxed">{s.intro}</p>
-                </div>
-                <div className="md:col-span-2 relative overflow-hidden rounded-2xl border border-white/8 aspect-video md:aspect-auto">
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.08 }}
+                  className="relative overflow-hidden rounded-2xl border border-white/8 aspect-[4/3] min-h-[220px]"
+                >
                   <img
                     src={s.image}
                     alt={s.title}
                     loading="lazy"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover scale-105 transition duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent" />
-                  {/* Gold accent line */}
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F5C200]" />
-                </div>
+                  <div className="absolute inset-x-0 bottom-0 h-0.5 bg-[#F5C200]" />
+                </motion.div>
               </div>
 
-              {/* Sub-services grid */}
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              <div className={subGridClass}>
                 {s.subServices.map((sub, i) => (
                   <SubCard key={sub.title} sub={sub} index={i} inView={inView} />
                 ))}
               </div>
 
-              {/* Closer CTA card */}
               {s.closer && (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="border border-[#F5C200]/20 bg-[#111] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+                  className="relative overflow-hidden border border-[#F5C200]/20 bg-[linear-gradient(135deg,rgba(245,194,0,0.08),rgba(17,17,17,0.96),rgba(245,194,0,0.05))] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_0_50px_rgba(245,194,0,0.08)]"
                 >
-                  <div className="max-w-2xl">
-                    {/* Gold separator */}
-                    <div className="w-8 h-0.5 bg-[#F5C200] mb-4" />
+                  <div className="absolute -right-10 -top-8 h-28 w-28 rounded-full bg-[#F5C200]/10 blur-3xl" />
+                  <div className="max-w-2xl relative z-10">
+                    <div className="flex items-center gap-2 mb-4 text-[#F5C200]">
+                      <ShieldCheck size={16} />
+                      <span className="text-[9px] uppercase tracking-[0.2em]">Built to perform</span>
+                    </div>
                     <h3 className="font-heading text-2xl md:text-3xl text-white mb-3">{s.closer.heading}</h3>
                     <p className="text-white/45 text-sm leading-relaxed">{s.closer.body}</p>
                   </div>
                   <Link
                     to="/contact"
-                    className="group inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0"
+                    className="group relative z-10 inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0"
                   >
                     Start a Project
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </Link>
                 </motion.div>
               )}
@@ -225,19 +248,17 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-
-      {/* ── HERO ────────────────────────────────── */}
       <section className="relative pt-40 pb-24 px-6 overflow-hidden" ref={heroRef}>
-        {/* Blobs */}
-        <div className="absolute -top-40 left-0 w-[600px] h-[600px] bg-[#F5C200]/6 rounded-full blur-[150px] pointer-events-none" />
-        <div className="absolute top-0 right-0 w-40 h-full opacity-10 pointer-events-none diag-stripes" />
+        <div className="absolute -top-40 left-0 w-[600px] h-[600px] bg-[#F5C200]/8 rounded-full blur-[160px] pointer-events-none" />
+        <div className="absolute top-10 right-0 w-[380px] h-[380px] bg-[#F5C200]/5 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(245,194,0,0.08),transparent_30%)] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 border border-[#F5C200]/20 rounded-full px-4 py-2 bg-[#F5C200]/5 mb-8"
+            className="inline-flex items-center gap-2.5 border border-[#F5C200]/20 rounded-full px-4 py-2 bg-[#F5C200]/5 mb-8 shadow-[0_0_30px_rgba(245,194,0,0.08)]"
           >
             <span className="size-1.5 rounded-full bg-[#F5C200] animate-pulse" />
             <span className="text-[9px] uppercase tracking-[0.35em] text-[#F5C200]">// What We Do</span>
@@ -253,7 +274,7 @@ export default function ServicesPage() {
           </motion.h1>
 
           <div className="flex justify-start mb-8">
-            <div className="w-16 h-0.5 bg-[#F5C200]" />
+            <div className="w-16 h-0.5 bg-[#F5C200] shadow-[0_0_30px_rgba(245,194,0,0.7)]" />
           </div>
 
           <div className="grid md:grid-cols-2 gap-10 items-end">
@@ -268,7 +289,6 @@ export default function ServicesPage() {
               full-time opportunities — all under one roof.
             </motion.p>
 
-            {/* Quick stat row */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
@@ -276,7 +296,7 @@ export default function ServicesPage() {
               className="flex flex-wrap gap-8"
             >
               {[["10+","Brands"],["105+","Projects"],["80%","Retention"],["4.3/5","Rating"]].map(([num, label]) => (
-                <div key={label}>
+                <div key={label} className="min-w-[90px] rounded-2xl border border-white/8 bg-white/[0.02] px-4 py-3 backdrop-blur-sm">
                   <p className="font-heading text-3xl text-[#F5C200]">{num}</p>
                   <p className="text-[9px] uppercase tracking-[0.2em] text-white/30 mt-1">{label}</p>
                 </div>
@@ -286,7 +306,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── SERVICE ICONS STRIP ──────────────────── */}
       <div className="border-y border-white/8 bg-black py-5 px-6">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-8 md:gap-14">
           {[
@@ -299,15 +318,18 @@ export default function ServicesPage() {
             { icon: Cpu,        label: "Strategy"        },
             { icon: Zap,        label: "Performance"     },
           ].map(({ icon: Icon, label }) => (
-            <div key={label} className="flex items-center gap-2 text-white/30 hover:text-[#F5C200] transition-colors duration-300 cursor-default">
+            <motion.div
+              key={label}
+              whileHover={{ y: -2 }}
+              className="flex items-center gap-2 text-white/30 hover:text-[#F5C200] transition-colors duration-300 cursor-default"
+            >
               <Icon size={14} strokeWidth={1.5} />
               <span className="text-[9px] uppercase tracking-[0.18em] whitespace-nowrap">{label}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      {/* ── ACCORDION ───────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-16 pb-32">
         <div className="border-t border-white/8">
           {SERVICES.map((s) => (
@@ -321,7 +343,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA STRIP ────────────────────── */}
       <section className="bg-black border-t border-white/8 py-16 px-6">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
@@ -335,7 +356,7 @@ export default function ServicesPage() {
           <div className="flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300"
+              className="group inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300 shadow-[0_0_30px_rgba(245,194,0,0.25)]"
             >
               Book a Discovery Call
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

@@ -347,7 +347,7 @@ useEffect(() => {
                 icon={<MapPin className="w-4 h-4" />}
                 label="Office"
                 lines={[
-                  "BRAND//BROS Studio",
+                  "BRAND//BROS Media",
                   "Gurgaon, Haryana, India",
                 ]}
               />

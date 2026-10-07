@@ -35,16 +35,16 @@ export default function Footer() {
               </p>
             </div>
             <p className="text-white/45 max-w-xs leading-relaxed text-sm mb-6">
-              A premium creative studio turning ambitious businesses into
+              A premium creative media turning ambitious businesses into
               unforgettable digital brands through video, strategy, and growth.
             </p>
 
             {/* Socials */}
             <div className="flex items-center gap-2.5">
               {[
-                { icon: Instagram, href: "https://instagram.com/mediaverse", label: "Instagram" },
-                { icon: Linkedin,  href: "https://linkedin.com/company/mediaverse", label: "LinkedIn" },
-                { icon: Youtube,   href: "https://youtube.com/@mediaverse", label: "YouTube" },
+                { icon: Instagram, href: "https://instagram.com/brandbros", label: "Instagram" },
+                { icon: Linkedin,  href: "https://linkedin.com/company/brandbros", label: "LinkedIn" },
+                { icon: Youtube,   href: "https://youtube.com/@brandbros", label: "YouTube" },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
