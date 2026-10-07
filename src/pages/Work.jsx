@@ -8,15 +8,16 @@ import {
 } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { useSEO } from "../hooks/useSEO";
 
 /* ─── Categories ──────────────────────────────────── */
-const CATEGORIES = ["All", "Promotion", "Reels", "Product", "Ads", "Events", "Social"];
+const CATEGORIES = ["All", "Food & Bevarages", "Real State", "Hotels & Resorts","Promotion", "Product Shoot", "Clothing & Fashion"];
 
 /* ─── Portfolio data ─────────────────────────────── */
 const WORKS = [
   {
     id: 1,
-    tag: "Events",
+    tag: "ALL",
     client: "DETALIENS",
     title: "Beyond Limits",
     metric: "33%+ Engagement",
@@ -24,7 +25,7 @@ const WORKS = [
   },
   {
     id: 2,
-    tag: "Product",
+    tag: "Clothing & Fashion",
     client: "RAYMOND",
     title: "Ride Free",
     metric: "28%+ Conversion",
@@ -32,7 +33,7 @@ const WORKS = [
   },
   {
     id: 3,
-    tag: "Product",
+    tag: "Hotels & Resorts",
     client: "JO MOTEL",
     title: "Vision in Motion",
     metric: "33%+ Engagement",
@@ -40,7 +41,7 @@ const WORKS = [
   },
   {
     id: 4,
-    tag: "Ads",
+    tag: "Hotels & Resorts",
     client: "JO MOTEL",
     title: "Power Redefined",
     metric: "38%+ Engagement",
@@ -48,7 +49,7 @@ const WORKS = [
   },
   {
     id: 5,
-    tag: "Events",
+    tag: "Food & Bevarages",
     client: "BERRY BROS",
     title: "Annual Fest 2026",
     metric: "14%+ Engagement",
@@ -56,7 +57,7 @@ const WORKS = [
   },
   {
     id: 6,
-    tag: "Social",
+    tag: "All",
     client: "PARTY",
     title: "Creative Studio",
     metric: "26%+ Engagement",
@@ -64,7 +65,7 @@ const WORKS = [
   },
   {
     id: 7,
-    tag: "Reels",
+    tag: "Clothing & Fashion",
     client: "LLM",
     title: "Luxury Meets Speed",
     metric: "15%+ Conversion",
@@ -72,7 +73,7 @@ const WORKS = [
   },
   {
     id: 8,
-    tag: "Reels",
+    tag: "Promotion",
     client: "XTRAFUEL",
     title: "Never Stop",
     metric: "24%+ Engagement",
@@ -80,7 +81,7 @@ const WORKS = [
   },
   {
     id: 9,
-    tag: "Product",
+    tag: "Food & Bevarages",
     client: "BERRY BROS",
     title: "Cinema Experience",
     metric: "17%+ Engagement",
@@ -88,7 +89,7 @@ const WORKS = [
   },
   {
     id: 10,
-    tag: "Ads",
+    tag: "All",
     client: "PARTY",
     title: "Open Happiness",
     metric: "43%+ Engagement",
@@ -96,7 +97,7 @@ const WORKS = [
   },
   {
     id: 11,
-    tag: "Reels",
+    tag: "All",
     client: "DETALIENS",
     title: "Bullet Run",
     metric: "37%+ Conversion",
@@ -104,7 +105,7 @@ const WORKS = [
   },
   {
     id: 12,
-    tag: "Reels",
+    tag: "Clothing & Fashion",
     client: "LLM",
     title: "Formal Edge",
     metric: "51%+ Engagement",
@@ -112,7 +113,7 @@ const WORKS = [
   },
   {
     id: 13,
-    tag: "Reels",
+    tag: "Food & Bevarages",
     client: "BERRY BROS",
     title: "Berry Vibes",
     metric: "22%+ Engagement",
@@ -120,7 +121,7 @@ const WORKS = [
   },
   {
     id: 14,
-    tag: "Reels",
+    tag: "Food & Bevarages",
     client: "BERRY BROS",
     title: "Dessert Drop",
     metric: "16%+ Conversion",
@@ -128,7 +129,7 @@ const WORKS = [
   },
   {
     id: 15,
-    tag: "Reels",
+    tag: "Clothing & Fashion",
     client: "LLM",
     title: "Season Six",
     metric: "19%+ Engagement",
@@ -136,7 +137,7 @@ const WORKS = [
   },
   {
     id: 16,
-    tag: "Reels",
+    tag: "Clothing & Fashion",
     client: "RAYMOND",
     title: "Raymond II",
     metric: "11% Conversion",
@@ -144,19 +145,83 @@ const WORKS = [
   },
   {
     id: 17,
-    tag: "Reels",
-    client: "BERRY BROS",
-    title: "Dessert Series",
-    metric: "24%+ Engagement",
-    video: "https://res.cloudinary.com/ds0y1ut9q/video/upload/v1785012731/dessert_1_lwlpz3.mp4",
+    tag: "Clothing & Fashion",
+    client: "LLM",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791293935/berrybros_v2_p2.mp4",
   },
   {
     id: 18,
-    tag: "Promotion",
+    tag: "Clothing & Fashion",
     client: "LLM",
     title: "Beyond Limits",
     metric: "40%+ Engagement",
     video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1786616106/llm_female_formal_1.mp4",
+  },
+  {
+    id: 19,
+    tag: "Promotion",
+    client: "XTRAFUEL",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294605/xtrafuel_v5_p2.mp4",
+  },
+  {
+    id: 20,
+    tag: "Real State",
+    client: "Think n Grow",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294584/TnG_v2_P3.mp4",
+  },
+  {
+    id: 21,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294575/berrybros_v10_p3_2.mp4",
+  },
+  {
+    id: 22,
+    tag: "Promotion",
+    client: "XTRAFUEL",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294574/vyapar_sample_edit.mp4",
+  },
+  {
+    id: 23,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791293952/berrybros_v5_p2.mp4",
+  },
+  {
+    id: 24,
+    tag: "Promotion",
+    client: "XTRAFUEL",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294195/xtrafuel_v6_p1.mp4",
+  },
+  {
+    id: 25,
+    tag: "Food & Bevarages",
+    client: "Waffle World",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791294097/waffle_sample.mp4",
+  },
+  {
+    id: 26,
+    tag: "Food & Bevarages",
+    client: "Berry Bros",
+    title: "Beyond Limits",
+    metric: "40%+ Engagement",
+    video: "https://res.cloudinary.com/h8jkoa7d/video/upload/v1791293945/berrybros_v8_p1.mp4",
   },
 ];
 

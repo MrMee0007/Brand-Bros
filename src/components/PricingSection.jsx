@@ -5,10 +5,30 @@ import { Link } from "react-router-dom";
 
 /* Matches pitch deck "ADD-ON SERVICES" slide */
 const ADDONS = [
-  { icon: Camera,     title: "PRODUCT SHOOT",   price: "Range ₹10,000 - ₹50,000",     per: "Varies on Product",       available: true },
-  { icon: Video,      title: "EVENT COVERAGE",  price: "₹25,000 - ₹50,000",    per: "",       available: true },
-  { icon: TrendingUp, title: "META ADS",         price: "Starting ₹8,000",    per: "Per Budget", available: true },
-  { icon: Aperture,   title: "DRONE SHOOT",      price: "COMING",     per: "SOON",   available: false },
+  {
+    icon: Camera,
+    title: "PRODUCT SHOOT",
+    desc: "Studio & on-location photography and high-converting commercial reels.",
+    available: true,
+  },
+  {
+    icon: Video,
+    title: "EVENT COVERAGE",
+    desc: "Cinematic multi-camera filming, dynamic recaps & after-movie production.",
+    available: true,
+  },
+  {
+    icon: TrendingUp,
+    title: "META ADS",
+    desc: "Targeted Facebook & Instagram ad campaigns optimized for scalable ROI.",
+    available: true,
+  },
+  {
+    icon: Aperture,
+    title: "DRONE SHOOT",
+    desc: "Licensed 4K aerial videography & dynamic FPV perspectives.",
+    available: true,
+  },
 ];
 
 const BOTTOM = [
@@ -123,9 +143,11 @@ export default function PricingSection() {
                     <span className="text-white/20 mt-0.5 flex-shrink-0">—</span>{f}
                   </li>
                 ))}
-                <li className="flex items-start gap-2 text-[0.78rem] text-[#F5C200]">
-                  {plan.gold}
-                </li>
+                {plan.gold && (
+                  <li className="flex items-start gap-2 text-[0.78rem] text-[#F5C200]">
+                    {plan.gold}
+                  </li>
+                )}
               </ul>
               <Link
                 to="/contact"
@@ -161,7 +183,7 @@ export default function PricingSection() {
         </div>
 
         {/* 4 add-on cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {ADDONS.map((a, i) => {
             const Icon = a.icon;
             return (
@@ -170,35 +192,40 @@ export default function PricingSection() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: 0.4 + i * 0.08 }}
-                className={`border rounded-2xl p-6 text-center flex flex-col items-center gap-4 hover:-translate-y-1.5 transition-all duration-400 ${
-                  a.available
-                    ? "border-white/10 bg-[#111] hover:border-[#F5C200]/40"
-                    : "border-white/6 bg-[#0d0d0d] opacity-60"
-                }`}
+                className="border border-white/10 bg-[#111] rounded-2xl p-6 text-center flex flex-col items-center hover:border-[#F5C200]/50 hover:bg-[#151515] hover:-translate-y-1.5 transition-all duration-400 group relative overflow-hidden"
               >
                 {/* Icon circle */}
-                <div className="w-14 h-14 rounded-full border-2 border-[#F5C200] flex items-center justify-center">
+                <div className="w-14 h-14 rounded-full border-2 border-[#F5C200] bg-[#F5C200]/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#F5C200]/10 transition-all duration-300">
                   <Icon size={22} className="text-[#F5C200]" strokeWidth={1.5} />
                 </div>
 
                 {/* Title */}
-                <h3 className="font-bold uppercase text-[0.72rem] tracking-[0.14em] text-white">{a.title}</h3>
+                <h3 className="font-bold uppercase text-[0.8rem] tracking-[0.14em] text-white mb-2">
+                  {a.title}
+                </h3>
 
                 {/* Gold separator */}
-                <div className="w-8 h-0.5 bg-[#F5C200]" />
+                <div className="w-8 h-0.5 bg-[#F5C200] mb-3 group-hover:w-12 transition-all duration-300" />
 
-                {/* Price */}
-                {a.available ? (
-                  <div>
-                    <p className="font-heading text-[2rem] text-[#F5C200] leading-none">{a.price}</p>
-                    {a.per && <p className="text-white/35 text-xs mt-1">{a.per}</p>}
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    <p className="font-heading text-xl text-[#F5C200] leading-none">{a.price}</p>
-                    <p className="text-[#F5C200] font-bold text-sm mt-0.5">{a.per}</p>
-                  </div>
-                )}
+                {/* Description */}
+                <p className="text-white/45 text-xs leading-relaxed mb-5 flex-1">
+                  {a.desc}
+                </p>
+
+                {/* Availability Badge */}
+                <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F5C200]/10 border border-[#F5C200]/30 text-[#F5C200] text-[10px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(245,194,0,0.06)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] animate-pulse" />
+                  <span>Available</span>
+                </div>
+
+                {/* CTA Link */}
+                <Link
+                  to="/contact"
+                  className="w-full py-2.5 rounded-lg border border-white/15 text-white/80 hover:text-black hover:bg-[#F5C200] hover:border-[#F5C200] text-[9px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-1.5"
+                >
+                  <span>Inquire Now</span>
+                  <span className="text-xs">→</span>
+                </Link>
               </motion.div>
             );
           })}

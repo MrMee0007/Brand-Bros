@@ -201,6 +201,55 @@ export default function HeroSection() {
         </AnimatePresence>
       </div>
 
+      {/* ══════ FLOATING ACTION BADGE: VIEW OUR PORTFOLIO ═════ */}
+      <motion.div
+        initial={{ opacity: 0, x: 25, scale: 0.9 }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          y: [0, -6, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.7, delay: 0.3 },
+          x: { duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 3.6, repeat: Infinity, ease: "easeInOut" },
+        }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        className="absolute right-6 sm:right-8 md:right-14 bottom-24 sm:bottom-26 md:bottom-28 z-30"
+      >
+        <Link
+          to="/work"
+          className="group relative flex items-center gap-3 md:gap-3.5 pl-3.5 md:pl-4 pr-2 md:pr-2.5 py-2 md:py-2.5 rounded-full bg-black/65 backdrop-blur-xl border border-[#F5C200]/30 hover:border-[#F5C200] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.8),0_0_20px_rgba(245,194,0,0.18)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.9),0_0_35px_rgba(245,194,0,0.45)] overflow-hidden cursor-pointer"
+          aria-label="View our portfolio"
+        >
+          {/* Shimmer sweep on hover */}
+          <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 pointer-events-none" />
+
+          {/* Glowing pulse indicator dot */}
+          <div className="relative flex items-center justify-center size-2.5 flex-shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F5C200] opacity-75" />
+            <span className="relative inline-flex rounded-full size-2 bg-[#F5C200]" />
+          </div>
+
+          {/* Badge text */}
+          <div className="flex flex-col text-left pr-1 select-none">
+            <span className="text-[7.5px] uppercase tracking-[0.28em] text-[#F5C200]/75 font-medium leading-none mb-1">
+              Selected Works
+            </span>
+            <span className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-white group-hover:text-[#F5C200] transition-colors leading-none">
+              View Our Portfolio
+            </span>
+          </div>
+
+          {/* Action arrow button */}
+          <div className="size-7 md:size-8 rounded-full bg-[#F5C200] text-black flex items-center justify-center group-hover:bg-white group-hover:rotate-45 transition-all duration-300 shadow-[0_0_15px_rgba(245,194,0,0.35)] flex-shrink-0">
+            <ArrowUpRight size={14} strokeWidth={2.4} />
+          </div>
+        </Link>
+      </motion.div>
+
       {/* ══════ MAIN CONTENT ═════════════════════ */}
       <motion.div
         style={{ opacity: fadeUp }}
@@ -270,10 +319,10 @@ export default function HeroSection() {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2.5 sm:gap-3 w-fit">
                 <Link
                   to="/work"
-                  className="group relative inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-3.5 text-[9px] font-bold uppercase tracking-[0.35em] overflow-hidden hover:-translate-y-px transition-all duration-300 shadow-[0_0_30px_rgba(245,194,0,0.3)]"
+                  className="group relative inline-flex items-center justify-center gap-2 bg-[#F5C200] text-black px-6 sm:px-7 py-3 sm:py-3.5 text-[9px] font-bold uppercase tracking-[0.35em] overflow-hidden hover:-translate-y-px transition-all duration-300 shadow-[0_0_30px_rgba(245,194,0,0.3)] w-fit"
                 >
                   <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-500" />
                   View Our Work
@@ -281,7 +330,7 @@ export default function HeroSection() {
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 border border-white/18 backdrop-blur-sm bg-white/5 px-7 py-3.5 text-[9px] font-bold uppercase tracking-[0.35em] text-white hover:border-[#F5C200]/50 hover:bg-[#F5C200]/8 hover:text-[#F5C200] transition-all duration-300"
+                  className="inline-flex items-center justify-center gap-2 border border-white/18 backdrop-blur-sm bg-white/5 px-6 sm:px-7 py-3 sm:py-3.5 text-[9px] font-bold uppercase tracking-[0.35em] text-white hover:border-[#F5C200]/50 hover:bg-[#F5C200]/8 hover:text-[#F5C200] transition-all duration-300 w-fit"
                 >
                   Start a Project
                   <ArrowUpRight size={12} />

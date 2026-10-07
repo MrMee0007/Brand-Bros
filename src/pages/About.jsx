@@ -30,7 +30,7 @@ const TEAM = [
   {
     name: "Yug Gupta",
     role: "Founder & Creative Director",
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1774567144/Story_eh2xik.jpg",
+    img: "https://res.cloudinary.com/h8jkoa7d/image/upload/v1791297372/Screenshot_2026-10-06_195554.png",
     color: "from-yellow-400 via-orange-400 to-red-500",
     bio: "Yug Gupta is the Founder of Brand Bros and a Computer Science Engineering student with a passion for cinematic storytelling, visual branding, and creative innovation. As a cinematographer and creative visionary, he transforms ideas into compelling visual experiences that leave a lasting impact.",
     quote: "Every frame has a purpose. Every story deserves to be unforgettable.",
@@ -38,7 +38,7 @@ const TEAM = [
   {
     name: "Ansh Garg",
     role: "Co-Founder & Creative Management Head",
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1783369087/WhatsApp_Image_2026-06-05_at_10.05.03_AM_avbrl2.jpg",
+    img: "https://res.cloudinary.com/h8jkoa7d/image/upload/v1791298020/ChatGPT_Image_Oct_6_2026_08_16_17_PM.png",
     color: "from-cyan-400 via-blue-500 to-purple-500",
     bio: "Ansh Garg is the Co-Founder of Brand Bros, leading creative management and post-production. Renowned for his exceptional editing skills and meticulous attention to detail, he turns raw footage into immersive cinematic experiences.",
     quote: "Editing is where imagination becomes reality.",
