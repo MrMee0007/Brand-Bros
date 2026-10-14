@@ -13,7 +13,7 @@ import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-reac
 const SLIDES = [
   {
     id: 1,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997621/Img23_sg4ffv.webp",
+    img: "https://res.cloudinary.com/n8tbvqpb/image/upload/v1792008630/Screenshot_2026-10-15_012621.webp",
     category: "Brand Film",
     title: "The Sensory\nUniverse",
     tag: "#BrandStory",
@@ -21,7 +21,7 @@ const SLIDES = [
   },
   {
     id: 2,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997618/Img14_vmuyqf.webp",
+    img: "https://res.cloudinary.com/n8tbvqpb/image/upload/v1792008629/Img20.webp",
     category: "Fashion Editorial",
     title: "Modern\nGenre",
     tag: "#FashionFilm",
@@ -29,7 +29,7 @@ const SLIDES = [
   },
   {
     id: 3,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1774478219/IMG_1232_njdn3g.webp",
+    img: "https://res.cloudinary.com/n8tbvqpb/image/upload/v1792008629/Img14.webp",
     category: "F&B Campaign",
     title: "Glimpse in\nthe Dark",
     tag: "#FoodPhotography",
@@ -37,7 +37,7 @@ const SLIDES = [
   },
   {
     id: 4,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1784997628/Img6_kwplgd.webp",
+    img: "https://res.cloudinary.com/n8tbvqpb/image/upload/v1792008630/Screenshot_2026-10-15_012235.webp ",
     category: "Production",
     title: "Behind \nCamera",
     tag: "#StudioLife",
@@ -45,7 +45,7 @@ const SLIDES = [
   },
   {
     id: 5,
-    img: "https://res.cloudinary.com/ds0y1ut9q/image/upload/v1774478160/IMG_0110.JPG_tticnz.webp",
+    img: "https://res.cloudinary.com/n8tbvqpb/image/upload/v1792008629/Img5.webp",
     category: "Creator Growth",
     title: "Your Story,\nAmplified",
     tag: "#CreatorEconomy",

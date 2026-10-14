@@ -14,7 +14,7 @@ import TeamSection from "../components/TeamSection";
 
 export default function Home() {
   useSEO({
-    title: "Brand Bros — Premium Creative Studio in Gurgaon",
+    title: "Brand Bros — Premium Creative Media in Gurgaon",
     description:
       "India's premium video production & branding studio. We create cinematic reels, brand films & digital campaigns for ambitious businesses. Based in Gurgaon.",
     canonical: "https://brandbros.vercel.app/",
