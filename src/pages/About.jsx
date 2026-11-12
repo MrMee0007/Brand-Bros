@@ -203,10 +203,10 @@ export default function About() {
   const heroInView = useInView(heroRef, { once: true });
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden bg-black text-white">
 
       {/* ═══ HERO ════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center pt-32 pb-24 px-6 overflow-hidden" ref={heroRef}>
+      <section className="relative min-h-screen flex items-center pt-32 pb-24 px-6 overflow-hidden bg-black" ref={heroRef}>
         {/* Blobs */}
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-[var(--brand)]/8 blur-[130px] animate-blob-1 pointer-events-none" />
         <div className="absolute -bottom-20 right-0 w-[500px] h-[500px] rounded-full bg-[#F5C200]/4 blur-[110px] animate-blob-2 pointer-events-none" />
@@ -245,7 +245,7 @@ export default function About() {
             className="font-heading uppercase text-[clamp(3.8rem,11vw,9.5rem)] leading-[0.85] tracking-tight mb-8"
           >
             <span className="block">We Build</span>
-            <span className="block text-gradient-gold">Brands That</span>
+            <span className="block text-[#F5C200]">Brands That</span>
             <span className="block">Matter.</span>
           </motion.h1>
 
@@ -254,9 +254,9 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.35 }}
-              className="text-white/50 leading-relaxed text-lg max-w-xl"
+              className="text-white/70 leading-relaxed text-lg max-w-xl"
             >
-              BRAND//BROS is a premium creative studio based in Gurgaon. We turn ambitious businesses
+              BRAND//BROS is a premium creative media agency based in Gurgaon. We turn ambitious businesses
               into unforgettable digital brands through cinematic production, strategic content,
               and data-driven growth — all under one roof.
             </motion.p>
@@ -270,7 +270,7 @@ export default function About() {
               {STATS.map(({ num, label }) => (
                 <div key={label}>
                   <div className="font-heading text-4xl text-[var(--brand)]">{num}</div>
-                  <div className="text-[9px] uppercase tracking-[0.22em] text-white/35 mt-1">{label}</div>
+                  <div className="text-[9px] uppercase tracking-[0.22em] text-white/55 mt-1">{label}</div>
                 </div>
               ))}
             </motion.div>
@@ -294,33 +294,61 @@ export default function About() {
       </section>
 
       {/* ═══ MARQUEE ─ reversed ══════════════════ */}
-      <div className="overflow-hidden border-y border-white/10 bg-[#050505] py-6 shadow-[inset_0_0_40px_rgba(0,0,0,0.8)]">
-        <div className="flex w-max min-w-full animate-marquee-right whitespace-nowrap select-none">
-          {[...Array(24)].map((_, i) => (
-            <span key={i} className="mx-10 text-[12px] sm:text-[13px] uppercase tracking-[0.45em] text-white/15">
-              Create <span className="text-[var(--brand)]/60 mx-3">✦</span> Edit <span className="text-[var(--brand)]/60 mx-3">✦</span> Inspire <span className="text-[var(--brand)]/60 mx-3">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
+
+<div className="relative overflow-hidden border-y border-[#F5C200]/30 bg-[#050505] py-7 sm:py-9 shadow-[inset_0_0_50px_rgba(0,0,0,0.9)]">
+
+  <div className="flex w-max min-w-full animate-marquee-right whitespace-nowrap select-none items-center">
+
+    {[...Array(12)].map((_, i) => (
+      <span
+        key={i}
+        className="mx-7 sm:mx-10 flex items-center gap-5 sm:gap-7 font-black text-[22px] sm:text-[32px] md:text-[38px] uppercase tracking-[0.12em] text-white"
+        style={{
+          fontFamily: "'Anton', sans-serif",
+          WebkitTextStroke: "0.3px currentColor",
+        }}
+      >
+        <span>CREATE</span>
+
+        <span className="text-[#F5C200] text-2xl sm:text-4xl">
+          ✦
+        </span>
+
+        <span>EDIT</span>
+
+        <span className="text-[#F5C200] text-2xl sm:text-4xl">
+          ✦
+        </span>
+
+        <span>INSPIRE</span>
+
+        <span className="text-[#F5C200] text-2xl sm:text-4xl">
+          ✦
+        </span>
+      </span>
+    ))}
+
+  </div>
+</div>
+
 
       {/* ═══ WHO WE ARE ══════════════════════════ */}
-      <section className="py-28 px-6">
+      <section className="bg-black py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <Section>
             <div className="grid lg:grid-cols-12 gap-16 items-center">
               <div className="lg:col-span-5">
                 <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-5">// Who We Are</p>
-                <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92]">
+                <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92] text-white">
                   More than a<br />content studio.
                 </h2>
               </div>
               <div className="lg:col-span-7">
-                <p className="text-white/50 text-lg leading-relaxed mb-6">
+                <p className="text-white/70 text-lg leading-relaxed mb-6">
                   We don't just make videos — we craft brand identities, cinematic campaigns, and
                   digital experiences that connect businesses with people at scale.
                 </p>
-                <p className="text-white/40 text-base leading-relaxed">
+                <p className="text-white/55 text-base leading-relaxed">
                   Every project is a blend of strategy, creativity, and technology.
                   We believe the best content is the kind that makes your audience feel something —
                   and then makes them buy something.
@@ -343,13 +371,13 @@ export default function About() {
 
 
       {/* ═══ TEAM — 3D FLIP CARDS ════════════════ */}
-      <section className="py-28 px-6">
+      <section className="bg-[#050505] py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <Section className="mb-16">
             <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-4">// The Team</p>
-            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92] max-w-xl">
+            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92] max-w-xl text-white">
               The creatives behind<br />every frame we shoot.
-              <span className="block text-white/30 text-2xl mt-2">Click a card to flip it.</span>
+              <span className="block text-white/55 text-2xl mt-2">Click a card to flip it.</span>
             </h2>
           </Section>
 
@@ -362,17 +390,17 @@ export default function About() {
       </section>
 
       {/* ═══ VALUES ══════════════════════════════ */}
-      <section className="py-28 px-6 bg-black">
+      <section className="bg-black py-28 px-6">
         <div className="max-w-7xl mx-auto">
           <Section className="mb-16">
             <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-4">// Our Principles</p>
-            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92]">
+            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92] text-white">
               Three things we<br />
-              <span className="text-white/35">never compromise on.</span>
+              <span className="text-[#F5C200]">never compromise on.</span>
             </h2>
           </Section>
 
-          <div className="grid md:grid-cols-3 gap-px bg-white/5">
+          <div className="grid md:grid-cols-3 gap-4">
             {VALUES.map((v, i) => {
               const Icon = v.icon;
               return (
@@ -382,7 +410,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-60px" }}
                     transition={{ duration: 0.6, delay: i * 0.1 }}
-                    className="group relative bg-black p-10 overflow-hidden hover:bg-[#F5C200]/4 transition-all duration-500 cursor-default h-full"
+                    className="group relative rounded-2xl border border-white/10 bg-[#111] p-8 sm:p-10 overflow-hidden hover:border-[var(--brand)]/40 hover:bg-[#141414] transition-all duration-500 cursor-default h-full"
                   >
                     <div className="absolute bottom-0 left-0 h-px w-0 group-hover:w-full bg-gradient-to-r from-[var(--brand)] to-transparent transition-all duration-700 pointer-events-none" />
                     <div className="mb-6 flex items-start justify-between">
@@ -392,7 +420,7 @@ export default function About() {
                       </div>
                     </div>
                     <h3 className="font-sans font-semibold text-base text-white mb-3 group-hover:text-[var(--brand)] transition-colors duration-300">{v.title}</h3>
-                    <p className="text-[0.83rem] text-white/40 leading-relaxed">{v.desc}</p>
+                    <p className="text-[0.83rem] text-white/65 leading-relaxed">{v.desc}</p>
                   </motion.div>
                 </Section>
               );
@@ -402,11 +430,11 @@ export default function About() {
       </section>
 
       {/* ═══ TIMELINE ════════════════════════════ */}
-      <section className="py-28 px-6">
+      <section className="bg-[#050505] py-28 px-6">
         <div className="max-w-4xl mx-auto">
           <Section className="mb-20">
             <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-4">// Our Journey</p>
-            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92]">
+            <h2 className="font-heading text-4xl md:text-[3.2rem] leading-[0.92] text-white">
               How we got here.
             </h2>
           </Section>
@@ -430,7 +458,7 @@ export default function About() {
                 </div>
                 <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-[var(--brand)] block mb-2">{item.year}</span>
                 <h3 className="font-sans font-semibold text-lg text-white mb-2 group-hover:text-[var(--brand)] transition-colors duration-300">{item.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed max-w-lg">{item.desc}</p>
+                <p className="text-sm text-white/65 leading-relaxed max-w-lg">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -460,7 +488,7 @@ export default function About() {
             <SwiperSlide key={i}>
               <div className="rounded-2xl border border-white/7 bg-white/[0.02] p-8 hover:border-[var(--brand)]/30 transition-all duration-300">
                 <div className="text-[var(--brand)] text-3xl font-serif mb-4">"</div>
-                <p className="text-white/65 text-[0.92rem] leading-relaxed mb-6">{t.quote}"</p>
+                <p className="text-white/80 text-[0.92rem] leading-relaxed mb-6">{t.quote}"</p>
                 <div>
                   <p className="font-semibold text-white text-sm">{t.name}</p>
                   <p className="text-[9px] uppercase tracking-[0.2em] text-[var(--brand)] mt-0.5">{t.org}</p>
@@ -493,16 +521,16 @@ export default function About() {
       </section> */}
 
       {/* ═══ CTA ═════════════════════════════════ */}
-      <section className="relative py-36 px-6 overflow-hidden">
+      <section className="relative overflow-hidden bg-black px-6 py-24">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-[var(--brand)]/6 blur-[160px]" />
         </div>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <p className="text-[var(--brand)] uppercase tracking-[0.35em] text-[10px] mb-6">// Let's Create Together</p>
+        <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-[#111] px-6 py-12 text-center shadow-[0_24px_70px_rgba(0,0,0,.35)] sm:px-10 sm:py-16">
+          <p className="text-[#F5C200] uppercase tracking-[0.35em] text-[10px] mb-6">// Let's Create Together</p>
           <h2 className="font-heading text-[clamp(3rem,9vw,7rem)] leading-[0.88] mb-8">
-            Your brand's<br /><span className="text-gradient-gold">best chapter</span><br />starts here.
+            Your brand's<br /><span className="text-[#F5C200]">best chapter</span><br />starts here.
           </h2>
-          <p className="text-white/45 text-base max-w-xl mx-auto mb-10 leading-relaxed">
+          <p className="text-white/70 text-base max-w-xl mx-auto mb-10 leading-relaxed">
             We take on a limited number of new clients each quarter to ensure every project gets our full attention. Apply now for next quarter.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -526,4 +554,3 @@ export default function About() {
     </div>
   );
 }
-

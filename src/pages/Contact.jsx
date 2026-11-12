@@ -73,150 +73,77 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+    <main className="relative min-h-screen overflow-hidden bg-black text-white">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,255,255,.09) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+          maskImage: "radial-gradient(ellipse at 50% 20%, black 15%, transparent 75%)",
+        }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 85% 10%, rgba(245,194,0,.12), transparent 35%), radial-gradient(ellipse at 5% 55%, rgba(245,194,0,.07), transparent 32%)",
+        }}
+      />
 
-
-      {/* Background Glow */}
-      <div className="absolute top-24 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#F5C200]/8 blur-[180px] rounded-full pointer-events-none" />
-
-      {/* Hero */}
-
-
-<section className="relative pt-40 pb-24 px-6 md:px-12 overflow-hidden">
-
-  {/* Animated Background Blobs */}
-  <motion.div
-    animate={{
-      x: [0, 50, 0],
-      y: [0, -40, 0],
-      scale: [1, 1.15, 1],
-    }}
-    transition={{
-      duration: 12,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    className="absolute top-20 left-20 w-72 h-72 bg-[#F5C200]/12 rounded-full blur-[120px]"
-  />
-
-  <motion.div
-    animate={{
-      x: [0, -60, 0],
-      y: [0, 40, 0],
-      scale: [1, 1.2, 1],
-    }}
-    transition={{
-      duration: 15,
-      repeat: Infinity,
-      ease: "easeInOut",
-    }}
-    className="absolute right-20 top-32 w-96 h-96 bg-[#F5C200]/6 rounded-full blur-[140px]"
-  />
-
-  <div className="max-w-7xl mx-auto relative z-10">
-
-    {/* Badge */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/20 bg-card/40 backdrop-blur-xl"
-    >
-      <div className="w-2 h-2 rounded-full bg-[#F5C200] animate-pulse" />
-      <span className="text-xs tracking-[0.25em] uppercase font-mono">
-        Let's Build Something Great
-      </span>
-    </motion.div>
-
-    {/* Heading */}
-    <motion.h1
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      className="mt-10 font-display text-6xl md:text-[9rem] leading-[0.9] tracking-tight"
-    >
-      <span className="block">Say</span>
-
-      <div className="relative h-[1.1em] overflow-hidden mt-3">
-        <AnimatePresence mode="wait">
-          <motion.span
-            key={currentWord}
-            initial={{
-              y: 180,
-              rotateX: 90,
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              rotateX: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: -180,
-              rotateX: -90,
-              opacity: 0,
-            }}
-            transition={{
-              duration: 0.8,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="absolute left-0 italic text-gradient-gold"
+      <section className="relative overflow-hidden px-6 pb-16 pt-36 md:px-12 md:pb-20 md:pt-44">
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="mb-6 inline-flex items-center gap-3 rounded-full border border-[#F5C200]/25 bg-white/[0.03] px-4 py-2"
           >
-            {heroWords[currentWord]}
-          </motion.span>
-        </AnimatePresence>
-      </div>
-    </motion.h1>
+            <span className="h-2 w-2 rounded-full bg-[#F5C200]" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#F5C200] sm:text-[10px]">
+              Let&apos;s build something great
+            </span>
+          </motion.div>
 
-    {/* Description */}
-    <motion.p
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.4, duration: 0.8 }}
-      className="mt-10 max-w-3xl text-lg md:text-2xl text-muted-foreground leading-relaxed"
-    >
-      Whether you're launching a startup, growing a brand,
-      scaling your business, or building a creator presence,
-      Brand Monk helps transform ambitious ideas into
-      unforgettable digital experiences.
-    </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-heading text-[clamp(4rem,12vw,10rem)] uppercase leading-[0.85] tracking-tight"
+          >
+            <span className="block">Say</span>
+            <span className="relative mt-2 block h-[0.95em] overflow-hidden text-[#F5C200]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWord}
+                  initial={{ y: "100%", rotateX: 45, opacity: 0 }}
+                  animate={{ y: "0%", rotateX: 0, opacity: 1 }}
+                  exit={{ y: "-100%", rotateX: -45, opacity: 0 }}
+                  transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute left-0 top-0"
+                >
+                  {heroWords[currentWord]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+          </motion.h1>
 
-    {/* Stats */}
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.7 }}
-      className="mt-14 flex flex-wrap gap-8"
-    >
-      <div>
-        <h3 className="text-4xl font-display">50+</h3>
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          Brands
-        </p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.7 }}
+            className="mt-8 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-base md:text-lg"
+          >
+            Whether you&apos;re launching a startup, growing a brand, scaling
+            your business, or building a creator presence, Brand Bros turns
+            ambitious ideas into unforgettable digital experiences.
+          </motion.p>
+        </div>
+      </section>
 
-      <div>
-        <h3 className="text-4xl font-display">100+</h3>
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          Creators
-        </p>
-      </div>
-
-      <div>
-        <h3 className="text-4xl font-display">24/7</h3>
-        <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          Innovation
-        </p>
-      </div>
-    </motion.div>
-
-  </div>
-</section>
-
-
-      {/* Content */}
-      <section className="px-6 md:px-12 pb-32 relative z-10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16">
+      <section className="relative z-10 px-6 pb-24 md:px-12 md:pb-32">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Form Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -224,19 +151,25 @@ useEffect(() => {
             transition={{ delay: 0.2 }}
             className="lg:col-span-7"
           >
-            <div className="mb-10 p-8 rounded-3xl border border-primary/20 bg-primary/5 backdrop-blur-sm">
-              <h2 className="font-display text-3xl md:text-4xl">
+            <div className="mb-8 rounded-2xl border border-white/10 bg-[#111] p-6 sm:p-8">
+              <p className="mb-3 text-[9px] font-bold uppercase tracking-[0.25em] text-[#F5C200]">
+                Start a conversation
+              </p>
+              <h2 className="font-heading text-3xl uppercase leading-tight text-white md:text-4xl">
                 Let's create something remarkable.
               </h2>
 
-              <p className="mt-3 text-muted-foreground">
+              <p className="mt-3 text-sm leading-relaxed text-white/50">
                 Share your goals and we'll help craft the right strategy for
                 your business, brand, or campaign.
               </p>
             </div>
 
-            <form onSubmit={onSubmit} className="space-y-8">
-              <div className="grid md:grid-cols-2 gap-8">
+            <form
+              onSubmit={onSubmit}
+              className="space-y-7 rounded-2xl border border-white/10 bg-[#0b0b0b] p-6 sm:p-8"
+            >
+              <div className="grid gap-6 md:grid-cols-2">
                 <Field
                   label="Your Name"
                   value={form.name}
@@ -253,7 +186,7 @@ useEffect(() => {
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid gap-6 md:grid-cols-2">
                 <Field
                   label="Brand / Company"
                   value={form.brand}
@@ -261,20 +194,20 @@ useEffect(() => {
                 />
 
                 <div>
-                  <label className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground">
+                  <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
                     Service Needed
                   </label>
 
                   <select
                     value={form.service}
                     onChange={update("service")}
-                    className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 font-display text-xl"
+                    className="mt-2 w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 font-sans text-sm text-white outline-none transition-colors focus:border-[#F5C200]/70 focus:ring-2 focus:ring-[#F5C200]/10"
                   >
                     {services.map((service) => (
                       <option
                         key={service}
                         value={service}
-                        className="bg-background"
+                        className="bg-[#111] text-white"
                       >
                         {service}
                       </option>
@@ -291,7 +224,7 @@ useEffect(() => {
               />
 
               <div>
-                <label className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground">
+                <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
                   Project Details
                 </label>
 
@@ -301,13 +234,13 @@ useEffect(() => {
                   value={form.message}
                   onChange={update("message")}
                   placeholder="Tell us about your project, goals, audience, timeline, and expectations..."
-                  className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 font-display text-xl resize-none placeholder:text-muted-foreground/40"
+                  className="mt-2 w-full resize-y rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 font-sans text-sm leading-relaxed text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#F5C200]/70 focus:ring-2 focus:ring-[#F5C200]/10"
                 />
               </div>
 
               <button
                 type="submit"
-                className="group relative overflow-hidden px-10 py-5 bg-primary text-primary-foreground font-mono text-sm tracking-[0.25em] uppercase rounded-xl"
+                className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-[#F5C200] px-7 py-4 text-[10px] font-bold uppercase tracking-[0.22em] text-black transition-colors hover:bg-[#FFD740]"
               >
                 <span className="relative z-10 flex items-center gap-3">
                   Send Message
@@ -324,7 +257,7 @@ useEffect(() => {
             transition={{ delay: 0.4 }}
             className="lg:col-span-5"
           >
-            <div className="sticky top-32 space-y-6">
+            <div className="space-y-4 lg:sticky lg:top-32">
               <Detail
                 icon={<Mail className="w-4 h-4" />}
                 label="Email"
@@ -352,8 +285,8 @@ useEffect(() => {
                 ]}
               />
 
-              <div className="rounded-3xl border border-border bg-card/50 backdrop-blur-xl p-8">
-                <p className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground mb-5">
+              <div className="rounded-2xl border border-white/10 bg-[#111] p-6 sm:p-8">
+                <p className="mb-5 text-[9px] font-bold uppercase tracking-[0.2em] text-white/45">
                   Follow Us
                 </p>
 
@@ -366,7 +299,7 @@ useEffect(() => {
                     <a
                       key={index}
                       href={href}
-                      className="w-12 h-12 flex items-center justify-center rounded-xl border border-border hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-white/65 transition-all duration-300 hover:border-[#F5C200] hover:bg-[#F5C200] hover:text-black"
                     >
                       <Icon className="w-5 h-5" />
                     </a>
@@ -378,33 +311,35 @@ useEffect(() => {
         </div>
       </section>
 
-    </div>
+    </main>
   );
 };
 
 const Field = ({ label, ...props }) => (
   <div>
-    <label className="text-[10px] font-mono tracking-[0.3em] uppercase text-muted-foreground">
+    <label className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
       {label}
     </label>
 
     <input
       {...props}
-      className="mt-2 w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 font-display text-xl transition-colors placeholder:text-muted-foreground/40"
+      className="mt-2 w-full rounded-lg border border-white/10 bg-white/[0.03] px-4 py-3 font-sans text-sm text-white outline-none transition-colors placeholder:text-white/25 focus:border-[#F5C200]/70 focus:ring-2 focus:ring-[#F5C200]/10"
     />
   </div>
 );
 
 const Detail = ({ icon, label, lines }) => (
-  <div className="rounded-3xl border border-border bg-card/50 backdrop-blur-xl p-8">
-    <div className="flex items-center gap-3 text-primary">
-      {icon}
-      <p className="text-[10px] font-mono tracking-[0.3em] uppercase">
+  <div className="rounded-2xl border border-white/10 bg-[#111] p-6 sm:p-7">
+    <div className="flex items-center gap-3 text-[#F5C200]">
+      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#F5C200]/40">
+        {icon}
+      </span>
+      <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/50">
         {label}
       </p>
     </div>
 
-    <div className="mt-4 space-y-2 font-display text-xl">
+    <div className="mt-4 space-y-2 font-sans text-sm font-medium leading-relaxed text-white/85">
       {lines.map((line) => (
         <p key={line}>{line}</p>
       ))}
@@ -413,5 +348,3 @@ const Detail = ({ icon, label, lines }) => (
 );
 
 export default Contact;
-
-

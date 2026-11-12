@@ -53,18 +53,7 @@ export default function StatsMarquee() {
     <section className="py-20 border-y border-white/5 bg-black">
 
       {/* Marquee */}
-      <div className="overflow-hidden border-y border-white/5 py-4 mb-16">
-        <div className="flex animate-marquee-left whitespace-nowrap select-none">
-          {doubled.map((brand, i) => (
-            <span key={i} className="inline-flex items-center gap-0">
-              <span className="mx-6 text-[10px] uppercase tracking-[0.22em] text-white/28 font-medium">
-                {brand}
-              </span>
-              <span className="text-[var(--brand)]/35 text-xs">✦</span>
-            </span>
-          ))}
-        </div>
-      </div>
+
 
       {/* Animated stats grid */}
       <div className="max-w-7xl mx-auto px-6">

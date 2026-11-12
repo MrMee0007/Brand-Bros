@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  ChevronDown, ArrowRight, ArrowUpRight,
+  ArrowRight, ArrowUpRight,
   Film, LayoutGrid, Megaphone, Camera, TrendingUp, Users,
   Star, Zap, Globe, Cpu, Sparkles, ShieldCheck,
 } from "lucide-react";
@@ -78,32 +78,32 @@ const SERVICES = [
   },
 ];
 
-/* ── Sub-service card ─────────────────────────────── */
-function SubCard({ sub, index, inView }) {
+/* ── Service capability card ─────────────────────── */
+function SubCard({ sub, index }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, delay: index * 0.06, ease: [0.2, 0, 0, 1] }}
-      whileHover={{ y: -6, scale: 1.01 }}
-      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(180deg,rgba(17,17,17,0.96),rgba(10,10,10,0.96))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.35)] transition-all duration-400"
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: [0.2, 0, 0, 1] }}
+      whileHover={{ y: -5 }}
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[#101010] p-5 transition-colors duration-300 hover:border-[#F5C200]/40 sm:p-6"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,194,0,0.15),transparent_38%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(245,194,0,0.12),transparent_42%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
       <div className="relative z-10">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="font-heading text-[#F5C200] text-base tracking-[0.2em]">
+        <div className="mb-5 flex items-center gap-3">
+          <span className="font-heading text-lg tracking-[0.16em] text-[#F5C200]">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <div className="flex-1 h-px bg-white/8 group-hover:bg-[#F5C200]/30 transition-colors duration-300" />
+          <div className="h-px flex-1 bg-white/10 transition-colors duration-300 group-hover:bg-[#F5C200]/40" />
         </div>
-        <h3 className="font-sans font-semibold text-white text-sm mb-2 group-hover:text-[#F5C200] transition-colors duration-300">
+        <h3 className="mb-2 font-sans text-sm font-bold text-white transition-colors duration-300 group-hover:text-[#F5C200]">
           {sub.title}
         </h3>
-        <p className="text-white/40 text-xs leading-relaxed mb-4">{sub.desc}</p>
-        <ul className="space-y-1.5">
+        <p className="mb-5 text-xs leading-relaxed text-white/45">{sub.desc}</p>
+        <ul className="grid gap-x-4 gap-y-2 sm:grid-cols-2">
           {sub.items.map((item) => (
-            <li key={item} className="flex items-start gap-2 text-xs text-white/55">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] flex-shrink-0 mt-1.5 shadow-[0_0_16px_rgba(245,194,0,0.7)]" />
+            <li key={item} className="flex items-start gap-2 text-[11px] leading-relaxed text-white/60">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#F5C200] shadow-[0_0_16px_rgba(245,194,0,0.7)]" />
               {item}
             </li>
           ))}
@@ -113,154 +113,135 @@ function SubCard({ sub, index, inView }) {
   );
 }
 
-/* ── Accordion item ───────────────────────────────── */
-function ServiceItem({ s, isOpen, onToggle }) {
-  const bodyRef = useRef(null);
-  const inView  = useInView(bodyRef, { once: true, margin: "-40px" });
+/* ── Active service detail ────────────────────────── */
+function ServiceItem({ s }) {
   const Icon    = s.icon;
-  const subGridClass =
-    s.subServices.length <= 1
-      ? "grid grid-cols-1 gap-4 mb-0"
-      : s.subServices.length <= 2
-        ? "grid sm:grid-cols-2 gap-4 mb-4"
-        : "grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6";
 
   return (
-    <article className="relative border-b border-white/8 last:border-b-0 overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-transparent via-[#F5C200]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-      <button
-        onClick={onToggle}
-        className="group relative flex w-full items-center justify-between gap-6 py-8 md:py-10 text-left transition-colors duration-300"
-        aria-expanded={isOpen}
-      >
-        <div className="flex items-center gap-6 md:gap-10">
-          <span className="font-heading text-3xl md:text-4xl text-[#F5C200]/40 group-hover:text-[#F5C200] transition-colors duration-300 w-14 flex-shrink-0">
+    <motion.article
+      key={s.id}
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: [0.2, 0, 0, 1] }}
+      className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#090909] shadow-[0_30px_90px_rgba(0,0,0,0.35)]"
+    >
+      <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="relative min-h-[300px] overflow-hidden lg:min-h-[470px]">
+          <img
+            src={s.image}
+            alt={s.title}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/5 lg:bg-gradient-to-r lg:from-black/75 lg:via-black/10 lg:to-transparent" />
+          <div className="absolute left-5 top-5 flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-3 py-2 backdrop-blur-md">
+            <Icon size={14} className="text-[#F5C200]" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-white">
+              {s.label}
+            </span>
+          </div>
+          <span className="absolute bottom-4 right-5 font-heading text-7xl leading-none text-white/20 sm:text-8xl">
             {s.number}
           </span>
-          <motion.div
-            whileHover={{ rotate: 8, scale: 1.06 }}
-            className="hidden sm:flex w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] group-hover:border-[#F5C200]/50 items-center justify-center flex-shrink-0 shadow-[0_0_30px_rgba(245,194,0,0.08)] transition-all duration-300"
-          >
-            <Icon size={18} className="text-white/40 group-hover:text-[#F5C200] transition-colors duration-300" strokeWidth={1.5} />
-          </motion.div>
-          <div>
-            <h2 className="font-heading text-2xl md:text-4xl lg:text-5xl leading-tight text-white group-hover:text-[#F5C200] transition-colors duration-300">
-              {s.title}
-            </h2>
-            <p className="text-white/35 text-sm mt-1 italic">{s.tagline}</p>
+        </div>
+
+        <div className="flex flex-col justify-center p-6 sm:p-9 lg:p-12">
+          <div className="mb-5 flex items-center gap-3 text-[#F5C200]">
+            <span className="h-px w-8 bg-[#F5C200]" />
+            <span className="text-[9px] font-bold uppercase tracking-[0.25em]">
+              {s.tagline}
+            </span>
+          </div>
+          <h2 className="font-heading text-[clamp(2.4rem,5vw,4.6rem)] uppercase leading-[0.9] text-white">
+            {s.title}
+          </h2>
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-white/55 sm:text-base">
+            {s.intro}
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#F5C200]/20 bg-[#F5C200]/5 px-3 py-2 text-[9px] uppercase tracking-[0.18em] text-[#F5C200]">
+              <Sparkles size={12} />
+              Signature systems
+            </span>
+            <span className="text-[9px] uppercase tracking-[0.18em] text-white/35">
+              {s.subServices.length} specialist service{s.subServices.length === 1 ? "" : "s"}
+            </span>
           </div>
         </div>
-        <div className={`w-10 h-10 rounded-full border border-white/10 group-hover:border-[#F5C200] flex items-center justify-center flex-shrink-0 transition-all duration-400 ${isOpen ? "bg-[#F5C200] border-[#F5C200] shadow-[0_0_30px_rgba(245,194,0,0.5)]" : ""}`}>
-          <ChevronDown
-            size={18}
-            className={`transition-transform duration-500 ${isOpen ? "rotate-180 text-black" : "text-white/40 group-hover:text-[#F5C200]"}`}
-          />
+      </div>
+
+      <div className="border-t border-white/10 p-5 sm:p-8 lg:p-10">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.25em] text-[#F5C200]">
+              The full stack
+            </p>
+            <h3 className="font-heading text-3xl uppercase text-white sm:text-4xl">
+              What we do
+            </h3>
+          </div>
+          <span className="hidden text-[9px] uppercase tracking-[0.2em] text-white/35 sm:block">
+            Built around your next move
+          </span>
         </div>
-      </button>
 
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.55, ease: [0.2, 0, 0, 1] }}
-            className="overflow-hidden"
-            ref={bodyRef}
-          >
-            <div className="pb-12">
-              <div className="grid md:grid-cols-[1.5fr_1fr] gap-6 mb-6 items-stretch">
-                <motion.div
-                  initial={{ opacity: 0, x: -18 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.45 }}
-                  className="flex flex-col justify-center"
-                >
-                  <div className="inline-flex items-center gap-2 rounded-full border border-[#F5C200]/20 bg-[#F5C200]/5 px-3 py-1.5 mb-4 w-fit">
-                    <Sparkles size={12} className="text-[#F5C200]" />
-                    <span className="text-[9px] uppercase tracking-[0.2em] text-[#F5C200]">Signature Systems</span>
-                  </div>
-                  <p className="text-white/55 text-base leading-relaxed">{s.intro}</p>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.08 }}
-                  className="relative overflow-hidden rounded-2xl border border-white/8 aspect-[4/3] min-h-[220px]"
-                >
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover scale-105 transition duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-transparent to-transparent" />
-                  <div className="absolute inset-x-0 bottom-0 h-0.5 bg-[#F5C200]" />
-                </motion.div>
+        <div className={`grid gap-4 ${s.subServices.length <= 1 ? "grid-cols-1" : "md:grid-cols-2 xl:grid-cols-3"}`}>
+          {s.subServices.map((sub, index) => (
+            <SubCard key={sub.title} sub={sub} index={index} />
+          ))}
+        </div>
+
+        {s.closer && (
+          <div className="relative mt-6 flex flex-col items-start justify-between gap-6 overflow-hidden rounded-2xl border border-[#F5C200]/20 bg-[linear-gradient(120deg,rgba(245,194,0,0.1),rgba(17,17,17,0.96)_45%,rgba(245,194,0,0.04))] p-6 sm:p-8 md:flex-row md:items-center">
+            <div className="pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full bg-[#F5C200]/10 blur-3xl" />
+            <div className="relative z-10 max-w-2xl">
+              <div className="mb-3 flex items-center gap-2 text-[#F5C200]">
+                <ShieldCheck size={15} />
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
+                  Built to perform
+                </span>
               </div>
-
-              <div className={subGridClass}>
-                {s.subServices.map((sub, i) => (
-                  <SubCard key={sub.title} sub={sub} index={i} inView={inView} />
-                ))}
-              </div>
-
-              {s.closer && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="relative overflow-hidden border border-[#F5C200]/20 bg-[linear-gradient(135deg,rgba(245,194,0,0.08),rgba(17,17,17,0.96),rgba(245,194,0,0.05))] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-[0_0_50px_rgba(245,194,0,0.08)]"
-                >
-                  <div className="absolute -right-10 -top-8 h-28 w-28 rounded-full bg-[#F5C200]/10 blur-3xl" />
-                  <div className="max-w-2xl relative z-10">
-                    <div className="flex items-center gap-2 mb-4 text-[#F5C200]">
-                      <ShieldCheck size={16} />
-                      <span className="text-[9px] uppercase tracking-[0.2em]">Built to perform</span>
-                    </div>
-                    <h3 className="font-heading text-2xl md:text-3xl text-white mb-3">{s.closer.heading}</h3>
-                    <p className="text-white/45 text-sm leading-relaxed">{s.closer.body}</p>
-                  </div>
-                  <Link
-                    to="/contact"
-                    className="group relative z-10 inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300 flex-shrink-0"
-                  >
-                    Start a Project
-                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </Link>
-                </motion.div>
-              )}
+              <h3 className="mb-2 font-heading text-2xl text-white sm:text-3xl">
+                {s.closer.heading}
+              </h3>
+              <p className="text-sm leading-relaxed text-white/50">{s.closer.body}</p>
             </div>
-          </motion.div>
+            <Link
+              to="/contact"
+              className="group relative z-10 inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#F5C200] px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FFD740]"
+            >
+              Start a Project
+              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </Link>
+          </div>
         )}
-      </AnimatePresence>
-    </article>
+      </div>
+    </motion.article>
   );
 }
 
 /* ── Page ─────────────────────────────────────────── */
 export default function ServicesPage() {
   const [activeId, setActiveId] = useState("creator");
-  const heroRef    = useRef(null);
+  const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: true });
-
-  const toggle = (id) => setActiveId((prev) => (prev === id ? null : id));
+  const activeService = SERVICES.find((service) => service.id === activeId) ?? SERVICES[0];
+  const ActiveServiceIcon = activeService.icon;
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <section className="relative pt-40 pb-24 px-6 overflow-hidden" ref={heroRef}>
-        <div className="absolute -top-40 left-0 w-[600px] h-[600px] bg-[#F5C200]/8 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute top-10 right-0 w-[380px] h-[380px] bg-[#F5C200]/5 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(245,194,0,0.08),transparent_30%)] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section className="relative overflow-hidden px-6 pb-16 pt-36 md:px-12 md:pb-20 md:pt-44" ref={heroRef}>
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_10%,rgba(245,194,0,0.12),transparent_35%),radial-gradient(ellipse_at_10%_70%,rgba(245,194,0,0.06),transparent_32%)]" />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="grid items-end gap-12 lg:grid-cols-[1.1fr_.9fr]">
+            <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2.5 border border-[#F5C200]/20 rounded-full px-4 py-2 bg-[#F5C200]/5 mb-8 shadow-[0_0_30px_rgba(245,194,0,0.08)]"
+            className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-[#F5C200]/20 bg-[#F5C200]/5 px-4 py-2 shadow-[0_0_30px_rgba(245,194,0,0.08)]"
           >
-            <span className="size-1.5 rounded-full bg-[#F5C200] animate-pulse" />
+            <span className="size-1.5 animate-pulse rounded-full bg-[#F5C200]" />
             <span className="text-[9px] uppercase tracking-[0.35em] text-[#F5C200]">// What We Do</span>
           </motion.div>
 
@@ -268,102 +249,165 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 40 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.2, 0, 0, 1] }}
-            className="font-heading text-[clamp(3.5rem,11vw,9rem)] leading-[0.87] uppercase mb-6"
+            className="mb-6 font-heading text-[clamp(4rem,11vw,9rem)] uppercase leading-[0.84]"
           >
             OUR <span className="text-[#F5C200]">SERVICES</span>
           </motion.h1>
 
-          <div className="flex justify-start mb-8">
-            <div className="w-16 h-0.5 bg-[#F5C200] shadow-[0_0_30px_rgba(245,194,0,0.7)]" />
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-10 items-end">
-            <motion.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.25 }}
-              className="text-white/50 text-base leading-relaxed max-w-lg"
-            >
-              Tap any practice to expand it. We've built specialised service stacks
-              across creator growth, business marketing, content production, and
-              full-time opportunities — all under one roof.
-            </motion.p>
+          <div className="mb-8 h-0.5 w-16 bg-[#F5C200] shadow-[0_0_30px_rgba(245,194,0,0.7)]" />
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            animate={heroInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="max-w-xl text-sm leading-relaxed text-white/50 sm:text-base"
+          >
+            Select any practice to explore it. We've built specialised service stacks
+            across creator growth, business marketing, content production, and
+            full-time opportunities — all under one roof.
+          </motion.p>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="flex flex-wrap gap-8"
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="relative min-h-[330px] overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#111] sm:min-h-[410px]"
             >
-              {[["10+","Brands"],["105+","Projects"],["80%","Retention"],["4.3/5","Rating"]].map(([num, label]) => (
-                <div key={label} className="min-w-[90px] rounded-2xl border border-white/8 bg-white/[0.02] px-4 py-3 backdrop-blur-sm">
-                  <p className="font-heading text-3xl text-[#F5C200]">{num}</p>
-                  <p className="text-[9px] uppercase tracking-[0.2em] text-white/30 mt-1">{label}</p>
-                </div>
-              ))}
+              <img src={activeService.image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-65" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-black/10" />
+              <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+                <p className="mb-3 flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.25em] text-[#F5C200]">
+                  <ActiveServiceIcon size={14} />
+                  Featured practice / {activeService.number}
+                </p>
+                <h2 className="max-w-lg font-heading text-4xl uppercase leading-[0.95] text-white sm:text-5xl">
+                  {activeService.title}
+                </h2>
+                <p className="mt-3 text-sm text-white/60">{activeService.tagline}</p>
+              </div>
+              <span className="absolute right-5 top-3 font-heading text-8xl leading-none text-white/20 sm:text-9xl">
+                {activeService.number}
+              </span>
             </motion.div>
+          </div>
+
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[["10+","Brands"],["105+","Projects"],["80%","Retention"],["4.3/5","Rating"]].map(([num, label]) => (
+              <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.025] px-4 py-4 sm:px-5">
+                <p className="font-heading text-3xl text-[#F5C200] sm:text-4xl">{num}</p>
+                <p className="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">{label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <div className="border-y border-white/8 bg-black py-5 px-6">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-8 md:gap-14">
+      <div className="border-y border-white/10 bg-[#080808] px-6 py-5 md:px-12">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
           {[
-            { icon: Film,       label: "Video Content"   },
-            { icon: LayoutGrid, label: "Carousel Posts"  },
-            { icon: Camera,     label: "Photography"     },
-            { icon: Megaphone,  label: "Brand Campaigns" },
-            { icon: TrendingUp, label: "Meta Ads"        },
-            { icon: Globe,      label: "Social Media"    },
-            { icon: Cpu,        label: "Strategy"        },
-            { icon: Zap,        label: "Performance"     },
+            { icon: Film, label: "Video Content" },
+            { icon: LayoutGrid, label: "Carousel Posts" },
+            { icon: Camera, label: "Photography" },
+            { icon: Megaphone, label: "Brand Campaigns" },
+            { icon: TrendingUp, label: "Meta Ads" },
+            { icon: Globe, label: "Social Media" },
+            { icon: Cpu, label: "Strategy" },
+            { icon: Zap, label: "Performance" },
           ].map(({ icon: Icon, label }) => (
-            <motion.div
+            <span
               key={label}
-              whileHover={{ y: -2 }}
-              className="flex items-center gap-2 text-white/30 hover:text-[#F5C200] transition-colors duration-300 cursor-default"
+              className="flex items-center gap-2 text-white/40"
             >
-              <Icon size={14} strokeWidth={1.5} />
-              <span className="text-[9px] uppercase tracking-[0.18em] whitespace-nowrap">{label}</span>
-            </motion.div>
+              <Icon size={14} className="text-[#F5C200]/75" strokeWidth={1.5} />
+              <span className="whitespace-nowrap text-[9px] uppercase tracking-[0.18em]">
+                {label}
+              </span>
+            </span>
           ))}
         </div>
       </div>
 
-      <section className="max-w-7xl mx-auto px-6 py-16 pb-32">
-        <div className="border-t border-white/8">
-          {SERVICES.map((s) => (
-            <ServiceItem
-              key={s.id}
-              s={s}
-              isOpen={activeId === s.id}
-              onToggle={() => toggle(s.id)}
-            />
-          ))}
+      <section className="px-6 pb-24 md:px-12 md:pb-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-5 flex items-end justify-between gap-4">
+            <div>
+              <p className="mb-2 text-[9px] font-bold uppercase tracking-[0.25em] text-[#F5C200]">
+                Find your next move
+              </p>
+              <h2 className="font-heading text-3xl uppercase text-white sm:text-4xl">
+                Our practices
+              </h2>
+            </div>
+            <span className="hidden text-[9px] uppercase tracking-[0.2em] text-white/35 sm:block">
+              Select a practice to explore
+            </span>
+          </div>
+
+          <div className="mb-7 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3" aria-label="Choose a service practice">
+            {SERVICES.map((service) => {
+              const Icon = service.icon;
+              const isActive = service.id === activeId;
+              return (
+                <button
+                  key={service.id}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveId(service.id)}
+                  className={`group flex min-h-24 items-center gap-3 rounded-2xl border p-4 text-left transition-all duration-300 sm:min-h-28 sm:p-5 ${
+                    isActive
+                      ? "border-[#F5C200]/50 bg-[#F5C200]/[0.08] shadow-[0_8px_30px_rgba(245,194,0,0.08)]"
+                      : "border-white/10 bg-[#0b0b0b] hover:border-white/20 hover:bg-[#111]"
+                  }`}
+                >
+                  <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${
+                    isActive ? "border-[#F5C200]/60 text-[#F5C200]" : "border-white/10 text-white/45 group-hover:text-[#F5C200]"
+                  }`}>
+                    <Icon size={17} strokeWidth={1.6} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.18em] text-white/35">
+                      {service.number} / {service.label}
+                    </span>
+                    <span className={`block font-heading text-lg uppercase leading-tight sm:text-xl ${isActive ? "text-[#F5C200]" : "text-white"}`}>
+                      {service.tagline}
+                    </span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            aria-label={`${activeService.label} service details`}
+          >
+            <AnimatePresence mode="wait">
+              <ServiceItem key={activeService.id} s={activeService} />
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
-      <section className="bg-black border-t border-white/8 py-16 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <section className="border-t border-white/10 bg-[#080808] px-6 py-16 md:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 md:flex-row md:items-center">
           <div>
-            <p className="font-heading text-3xl md:text-4xl text-white">
+            <p className="font-heading text-3xl text-white md:text-4xl">
               Ready to <span className="text-[#F5C200]">start</span> something?
             </p>
-            <p className="text-white/40 text-sm mt-2 max-w-md leading-relaxed">
+            <p className="mt-2 max-w-md text-sm leading-relaxed text-white/40">
               Strategy. Content. Distribution. Growth — all from one studio.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-2 bg-[#F5C200] text-black px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FFD740] hover:-translate-y-0.5 transition-all duration-300 shadow-[0_0_30px_rgba(245,194,0,0.25)]"
+              className="group inline-flex items-center gap-2 rounded-lg bg-[#F5C200] px-7 py-4 text-[10px] font-bold uppercase tracking-widest text-black shadow-[0_0_30px_rgba(245,194,0,0.25)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#FFD740]"
             >
               Book a Discovery Call
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
               href="mailto:anshgarg7640@gmail.com"
-              className="inline-flex items-center gap-2 border border-white/12 px-7 py-4 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:border-[#F5C200]/40 hover:text-[#F5C200] transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/12 px-7 py-4 text-[10px] font-bold uppercase tracking-widest transition-all duration-300 hover:border-[#F5C200]/40 hover:text-[#F5C200]"
             >
               brandbros1711@gmail.com
             </a>

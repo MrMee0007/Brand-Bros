@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import SectionParallax from "./SectionParallax";
 
 const TESTIMONIALS = [
   {
@@ -77,36 +78,46 @@ export default function TestimonialsSection() {
   const t = TESTIMONIALS[current];
 
   return (
-    <section ref={ref} className="relative py-32 px-6 overflow-hidden bg-black">
-
-      {/* Glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[var(--brand)]/7 blur-[150px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#F5C200]/5 blur-[150px] rounded-full pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative z-10">
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-[#faf6e9] px-6 py-24 text-[#0b0b0b] md:px-12 md:py-32"
+    >
+      <SectionParallax
+        targetRef={ref}
+        className="z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 90% 15%, rgba(242,201,0,.13), transparent 38%), radial-gradient(ellipse at 5% 90%, rgba(242,201,0,.08), transparent 35%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-5xl">
 
         {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-12 text-center md:mb-16"
         >
-          <p className="text-[var(--brand)] uppercase tracking-[0.3em] text-[10px] mb-5">Client Stories</p>
-          <h2 className="font-heading text-5xl md:text-7xl leading-none">
-          
-            <span className="block text-[var(--brand)]">  What Clients Say About Us</span>
+          <p className="mb-4 text-[9px] font-bold uppercase tracking-[0.3em] text-[#514e48]">
+            Client stories
+          </p>
+          <h2 className="text-[clamp(3rem,7vw,6rem)] uppercase leading-[0.9] text-[#0b0b0b]" style={{ fontFamily: "'Anton', sans-serif" }}>
+            What clients <span className="text-[#f2c900]">say.</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-relaxed text-[#514e48] sm:text-base">
+            A few words from the people we&apos;ve had the pleasure of working with.
+          </p>
         </motion.div>
 
         {/* Card */}
-        <div className="relative rounded-[2.5rem] border border-white/8 bg-white/[0.02] backdrop-blur-xl p-8 md:p-14 overflow-hidden">
-          <Quote size={160} className="absolute right-6 top-6 text-[var(--brand)]/8 pointer-events-none" />
+        <div className="relative overflow-hidden rounded-[7px] border border-[#ded9ce] bg-[#fffefa] p-6 shadow-[0_12px_28px_rgba(0,0,0,0.055)] sm:p-8 md:p-12">
+          <Quote size={120} className="pointer-events-none absolute right-4 top-4 text-[#f2c900]/15 sm:right-8 sm:top-8" />
 
-          <div className="flex flex-col md:flex-row items-center gap-10">
+          <div className="flex flex-col items-start gap-7 md:flex-row md:items-center md:gap-10">
             {/* Avatar */}
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-[var(--brand)]/28 flex items-center justify-center bg-gradient-to-br from-[#111] to-[#1c1c1c] flex-shrink-0">
-              <span className="font-heading text-3xl md:text-4xl text-[var(--brand)]">{t.initials}</span>
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[#f2c900] bg-[#faf6e9] sm:h-20 sm:w-20">
+              <span className="text-2xl text-[#0b0b0b] sm:text-3xl" style={{ fontFamily: "'Anton', sans-serif" }}>{t.initials}</span>
             </div>
 
             {/* Quote */}
@@ -119,13 +130,13 @@ export default function TestimonialsSection() {
                   exit={{ opacity: 0, x: -35 }}
                   transition={{ duration: 0.45 }}
                 >
-                  <blockquote className="text-lg md:text-2xl text-white leading-relaxed font-light">
-                    "{t.quote}"
+                  <blockquote className="text-base font-medium leading-relaxed text-[#0b0b0b] sm:text-lg md:text-2xl">
+                    &ldquo;{t.quote}&rdquo;
                   </blockquote>
 
-                  <div className="mt-7">
-                    <p className="text-white font-semibold text-base">{t.name}</p>
-                    <p className="text-[var(--brand)] uppercase tracking-[0.2em] text-[10px] mt-0.5">{t.org}</p>
+                  <div className="mt-6">
+                    <p className="text-sm font-bold text-[#0b0b0b] sm:text-base">{t.name}</p>
+                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-[#514e48]">{t.org}</p>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -133,8 +144,8 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-between mt-10">
-            <span className="text-white/30 text-xs">
+          <div className="mt-8 flex items-center justify-between border-t border-[#ded9ce] pt-5">
+            <span className="text-xs font-medium text-[#514e48]">
               {String(current + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}
             </span>
 
@@ -146,8 +157,8 @@ export default function TestimonialsSection() {
                   onClick={() => setCurrent(i)}
                   className={`rounded-full transition-all duration-300 ${
                     i === current
-                      ? "w-5 h-1.5 bg-[var(--brand)]"
-                      : "w-1.5 h-1.5 bg-white/20 hover:bg-white/40"
+                      ? "w-5 h-1.5 bg-[#f2c900]"
+                      : "w-1.5 h-1.5 bg-black/20 hover:bg-black/40"
                   }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
@@ -157,15 +168,15 @@ export default function TestimonialsSection() {
             <div className="flex gap-2.5">
               <button
                 onClick={prev}
-                className="w-11 h-11 rounded-full border border-[var(--brand)]/28 text-[var(--brand)] flex items-center justify-center hover:bg-[var(--brand)] hover:text-black transition-all duration-200"
-                aria-label="Previous"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#ded9ce] text-[#0b0b0b] transition-all duration-200 hover:border-[#f2c900] hover:bg-[#f2c900]"
+                aria-label="Previous testimonial"
               >
                 <ChevronLeft size={17} />
               </button>
               <button
                 onClick={next}
-                className="w-11 h-11 rounded-full border border-[var(--brand)]/28 text-[var(--brand)] flex items-center justify-center hover:bg-[var(--brand)] hover:text-black transition-all duration-200"
-                aria-label="Next"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#ded9ce] text-[#0b0b0b] transition-all duration-200 hover:border-[#f2c900] hover:bg-[#f2c900]"
+                aria-label="Next testimonial"
               >
                 <ChevronRight size={17} />
               </button>

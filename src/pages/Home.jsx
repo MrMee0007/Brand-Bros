@@ -11,6 +11,8 @@ import PricingSection      from "../components/PricingSection";
 import TestimonialsSection from "../components/TestimonalsSection";
 import CTA                 from "../components/CTA";
 import TeamSection from "../components/TeamSection";
+import CurtainSplitHero from "../components/CurtainSplitHero";
+import BrandLogo from "../components/brand-logo";
 
 export default function Home() {
   useSEO({
@@ -21,8 +23,10 @@ export default function Home() {
   });
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="">
       <HeroSection />
+      <BrandLogo />
+      <CurtainSplitHero />
       <StatsMarquee />
       <ServicesSection />
       <ProcessSection />
@@ -34,7 +38,7 @@ export default function Home() {
       <PricingSection />
       <TeamSection />
       <TestimonialsSection />
-      <CTA />
+      {/* <CTA /> */}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Camera, Video, TrendingUp, Aperture, Star, Clock, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import SectionParallax from "./SectionParallax";
 
 /* Matches pitch deck "ADD-ON SERVICES" slide */
 const ADDONS = [
@@ -93,12 +94,21 @@ const PLANS = [
 
 export default function PricingSection() {
   const ref    = useRef(null);
+  const plansRef = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="py-28 px-6 bg-black" ref={ref}>
-      <div className="max-w-7xl mx-auto">
-
+    <section id="pricing" className="bg-[#faf6e9] text-[#0b0b0b]" ref={ref}>
+      <div ref={plansRef} className="relative overflow-hidden bg-[#faf6e9] px-6 py-24 text-[#0b0b0b] md:py-28">
+        <SectionParallax
+          targetRef={plansRef}
+          className="z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 90% 10%, rgba(242,201,0,.13), transparent 38%), radial-gradient(ellipse at 8% 88%, rgba(242,201,0,.08), transparent 34%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
         {/* Retainer plans */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -106,13 +116,13 @@ export default function PricingSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-4"
         >
-          <h2 className="font-heading text-[clamp(3rem,8vw,7rem)] leading-none">
-         <span className="text-[#F5C200]">   OUR PLANS</span>
+          <h2 className="text-[clamp(3rem,8vw,7rem)] leading-none text-[#0b0b0b]" style={{ fontFamily: "'Anton', sans-serif" }}>
+            OUR <span className="text-[#f2c900]">PLANS</span>
           </h2>
-          <p className="text-white/45 mt-4 text-sm">Transparent retainers. Cancel anytime. Scale à la carte.</p>
+          <p className="mt-4 text-sm font-medium text-[#514e48]">Transparent retainers. Cancel anytime. Scale à la carte.</p>
         </motion.div>
         <div className="flex justify-center mb-12">
-          <div className="w-16 h-0.5 bg-[#F5C200]" />
+          <div className="w-16 h-0.5 bg-[#f2c900]" />
         </div>
 
         <div className="grid md:grid-cols-3 gap-5 mb-20 items-start">
@@ -124,27 +134,27 @@ export default function PricingSection() {
               transition={{ duration: 0.6, delay: i * 0.1 }}
               className={`relative rounded-2xl border p-7 flex flex-col hover:-translate-y-1.5 transition-all duration-400 ${
                 plan.featured
-                  ? "border-[#F5C200] bg-[#111] shadow-[0_0_60px_rgba(245,194,0,0.1)] md:-mt-4"
-                  : "border-white/10 bg-[#111]"
+                  ? "border-[#f2c900] bg-[#fffefa] shadow-[0_12px_28px_rgba(0,0,0,0.055)] md:-mt-4"
+                  : "border-[#ded9ce] bg-[#fffefa]"
               }`}
             >
               {plan.featured && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#F5C200] text-black text-[9px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full whitespace-nowrap">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#f2c900] text-[#0b0b0b] text-[9px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full whitespace-nowrap">
                   Most Popular
                 </div>
               )}
-              <h3 className="font-heading text-2xl text-white tracking-widest mb-1">{plan.name}</h3>
-              <p className="text-white/35 text-xs mb-5">{plan.desc}</p>
-              <div className="w-8 h-0.5 bg-[#F5C200] mb-5" />
-              <p className="font-heading text-xl text-[#F5C200] mb-6">Contact Us for Pricing</p>
+              <h3 className="text-2xl tracking-widest text-[#0b0b0b] mb-1" style={{ fontFamily: "'Anton', sans-serif" }}>{plan.name}</h3>
+              <p className="text-[#514e48] text-xs font-medium mb-5">{plan.desc}</p>
+              <div className="w-8 h-0.5 bg-[#f2c900] mb-5" />
+              <p className="text-xl text-[#0b0b0b] mb-6" style={{ fontFamily: "'Anton', sans-serif" }}>Contact Us for Pricing</p>
               <ul className="space-y-2 flex-1 mb-7">
                 {plan.features.map(f => (
-                  <li key={f} className="flex items-start gap-2 text-[0.78rem] text-white/50">
-                    <span className="text-white/20 mt-0.5 flex-shrink-0">—</span>{f}
+                  <li key={f} className="flex items-start gap-2 text-[0.78rem] text-[#514e48]">
+                    <span className="text-[#b59a00] mt-0.5 flex-shrink-0">—</span>{f}
                   </li>
                 ))}
                 {plan.gold && (
-                  <li className="flex items-start gap-2 text-[0.78rem] text-[#F5C200]">
+                  <li className="flex items-start gap-2 text-[0.78rem] text-[#514e48]">
                     {plan.gold}
                   </li>
                 )}
@@ -153,8 +163,8 @@ export default function PricingSection() {
                 to="/contact"
                 className={`block text-center py-3.5 rounded-lg text-[9px] font-bold uppercase tracking-widest transition-all duration-300 ${
                   plan.featured
-                    ? "bg-[#F5C200] text-black hover:bg-[#FFD740]"
-                    : "border border-white/25  hover:border-[#F5C200]/50 hover:text-[#F5C200] text-white"
+                    ? "bg-[#f2c900] text-[#0b0b0b] hover:bg-[#e2bd00]"
+                    : "border border-[#ded9ce] hover:border-[#f2c900] hover:bg-[#f2c900]/10 text-[#0b0b0b]"
                 }`}
               >
                 Get Started →
@@ -162,7 +172,11 @@ export default function PricingSection() {
             </motion.div>
           ))}
         </div>
+        </div>
+      </div>
 
+      <div className="bg-black px-6 py-24 text-white md:py-28">
+        <div className="mx-auto max-w-7xl">
         {/* ── ADD-ON SERVICES — pitch deck slide ── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -170,16 +184,16 @@ export default function PricingSection() {
           transition={{ duration: 0.7, delay: 0.35 }}
           className="text-center mb-4"
         >
-          <h2 className="font-heading text-[clamp(2.5rem,7vw,5.5rem)] leading-none">
-           <span className="text-[#F5C200]"> ADD-ON SERVICES</span>
+          <h2 className="text-[clamp(2.5rem,7vw,5.5rem)] leading-none text-white" style={{ fontFamily: "'Anton', sans-serif" }}>
+            ADD-ON <span className="text-[#f2c900]">SERVICES</span>
           </h2>
           <p className="text-white/45 mt-3 text-sm">
             Powerful add-ons to{" "}
-            <span className="text-[#F5C200] font-semibold">elevate your brand.</span>
+            <span className="text-[#f2c900] font-bold">elevate your brand.</span>
           </p>
         </motion.div>
         <div className="flex justify-center mb-10">
-          <div className="w-16 h-0.5 bg-[#F5C200]" />
+          <div className="w-16 h-0.5 bg-[#f2c900]" />
         </div>
 
         {/* 4 add-on cards */}
@@ -192,11 +206,11 @@ export default function PricingSection() {
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.55, delay: 0.4 + i * 0.08 }}
-                className="border border-white/10 bg-[#111] rounded-2xl p-6 text-center flex flex-col items-center hover:border-[#F5C200]/50 hover:bg-[#151515] hover:-translate-y-1.5 transition-all duration-400 group relative overflow-hidden"
+                className="border border-white/10 bg-[#111] rounded-2xl p-6 text-center flex flex-col items-center hover:border-[#f2c900]/50 hover:bg-[#151515] hover:-translate-y-1.5 transition-all duration-400 group relative overflow-hidden"
               >
                 {/* Icon circle */}
-                <div className="w-14 h-14 rounded-full border-2 border-[#F5C200] bg-[#F5C200]/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#F5C200]/10 transition-all duration-300">
-                  <Icon size={22} className="text-[#F5C200]" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full border-2 border-[#f2c900] bg-[#f2c900]/5 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#f2c900]/10 transition-all duration-300">
+                  <Icon size={22} className="text-[#f2c900]" strokeWidth={1.5} />
                 </div>
 
                 {/* Title */}
@@ -205,7 +219,7 @@ export default function PricingSection() {
                 </h3>
 
                 {/* Gold separator */}
-                <div className="w-8 h-0.5 bg-[#F5C200] mb-3 group-hover:w-12 transition-all duration-300" />
+                <div className="w-8 h-0.5 bg-[#f2c900] mb-3 group-hover:w-12 transition-all duration-300" />
 
                 {/* Description */}
                 <p className="text-white/45 text-xs leading-relaxed mb-5 flex-1">
@@ -214,8 +228,8 @@ export default function PricingSection() {
 
                 {/* Availability Badge */}
                 {a.available ? (
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F5C200]/10 border border-[#F5C200]/30 text-[#F5C200] text-[10px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(245,194,0,0.06)]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#F5C200] animate-pulse" />
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#f2c900]/10 border border-[#f2c900]/30 text-[#f2c900] text-[10px] font-bold tracking-widest uppercase mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#f2c900] animate-pulse" />
                     <span>Available</span>
                   </div>
                 ) : (
@@ -229,7 +243,7 @@ export default function PricingSection() {
                 {a.available ? (
                   <Link
                     to="/contact"
-                    className="w-full py-2.5 rounded-lg border border-white/15 text-white/80 hover:text-black hover:bg-[#F5C200] hover:border-[#F5C200] text-[9px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-1.5"
+                    className="w-full py-2.5 rounded-lg border border-white/15 text-white/80 hover:text-black hover:bg-[#f2c900] hover:border-[#f2c900] text-[9px] font-bold uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-1.5"
                   >
                     <span>Inquire Now</span>
                     <span className="text-xs">→</span>
@@ -253,12 +267,12 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.65 }}
-          className="border border-white/8 bg-[#111] rounded-2xl px-6 py-4 flex flex-wrap items-center justify-around gap-6"
+          className="border border-white/10 bg-[#111] rounded-2xl px-6 py-4 flex flex-wrap items-center justify-around gap-6"
         >
           {BOTTOM.map(({ icon: Icon, label, desc }) => (
             <div key={label} className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full border border-[#F5C200]/50 flex items-center justify-center flex-shrink-0">
-                <Icon size={15} className="text-[#F5C200]" strokeWidth={1.5} />
+              <div className="w-9 h-9 rounded-full border border-[#f2c900]/50 flex items-center justify-center flex-shrink-0">
+                <Icon size={15} className="text-[#f2c900]" strokeWidth={1.5} />
               </div>
               <div>
                 <p className="font-bold uppercase text-[0.68rem] tracking-[0.14em] text-white">{label}</p>
@@ -267,6 +281,7 @@ export default function PricingSection() {
             </div>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );
